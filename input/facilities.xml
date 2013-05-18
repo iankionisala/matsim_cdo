@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facilities SYSTEM "http://www.matsim.org/files/dtd/facilities_v1.dtd">
+<facilities>
+
+<!-- ===============================DV Police ======================================= -->
+
+	<facility id="0" x="2369292.81183" y="890012.70917">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+
+<!-- ==================================Maria Reyna==================================== -->
+
+	<facility id="10" x="2370855.898997127" y="889762.9693487085">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ===================================Provincial Hospital=================================== -->
+
+	<facility id="11" x="2370167.282520947" y="890888.3188375039">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- =====================================Sabal Hospital================================= -->
+
+	<facility id="12" x="2369952.441334766" y="890990.9386913532">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ================================Polymedic====================================== -->
+
+	<facility id="13" x="2369695.201006934" y="890534.689450975">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================Maternity================================== -->
+
+	<facility id="14" x="2369354.7979941964" y="889766.0738617886">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ========================================Madonna Hospital============================== -->
+
+	<facility id="15" x="2368530.963216997" y="889846.141530682">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ===================================City Hospital=================================== -->
+
+	<facility id="16" x="2367655.038612423" y="890362.4457075029">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================Polymedic plaza================================== -->
+
+	<facility id="17" x="2368029.3059445783" y="891785.1401065544">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================Medical Hospital================================== -->
+
+	<facility id="18" x="2369843.962274919" y="890973.0695289645">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ==================================Balulang Elementary School==================================== -->
+
+	<facility id="19" x="2368575.0885537993" y="885885.5658242189">
+		<activity type="evacuation">
+			<opentime day="wkday" start_time="08:00:00" end_time="19:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ================================Cogon Police====================================== -->
+
+	<facility id="2" x="2370387.30679" y="889944.51613">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- =================================CDO Fire Station===================================== -->
+
+	<facility id="20" x="2370372.5616" y="890206.78162">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ==================================Aloba Fire Station==================================== -->
+
+	<facility id="21" x="2369946.20557" y="887431.34376">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ================================Macabalan Fire Station====================================== -->
+
+	<facility id="22" x="2371113.48983" y="893177.56688">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ===============================agora police======================================= -->
+
+	<facility id="3" x="2371042.87358" y="891329.15045">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================carmen police================================== -->
+
+	<facility id="4" x="2368640.97936" y="890271.56876">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ==================================Macabalan police==================================== -->
+
+	<facility id="5" x="2371283.38043" y="892507.41226">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ===================================Macasandig Police=================================== -->
+
+	<facility id="6" x="2369755.79361" y="888529.79714">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ================================Operation Director Police====================================== -->
+
+	<facility id="7" x="2367979.04346" y="889937.45813">
+		<activity type="police ">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ==================================Provincial Director Police==================================== -->
+
+	<facility id="8" x="2367883.16568" y="890012.95724">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ===================================CUMC=================================== -->
+
+	<facility id="9" x="2372938.905255894" y="890299.9450526924">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+<!-- ==================================Burgos St - motalban St==================================== -->
+
+	<facility id="23" x="2369292.48749" y="890580.85362">
+		<activity type="evacuation">
+			<opentime day="wkday" start_time="08:00:00" end_time="19:00:00" />
+		</activity>
+
+	</facility>
+
+
+</facilities>

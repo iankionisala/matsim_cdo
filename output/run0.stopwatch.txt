@@ -1,0 +1,3 @@
+Iteration	BEGIN iteration	BEGIN replanning	END replanning	BEGIN dump all plans	END dump all plans	BEGIN mobsim	END mobsim	END iteration		replanning	dump all plans	mobsim	iteration
+0	18:02:32			18:02:32	18:02:32	18:02:32	18:02:33	18:02:34			00:00:00	00:00:00	00:00:02
+1	18:02:34	18:02:34	18:02:35	18:02:35	18:02:35	18:02:35	18:02:35	18:02:36		00:00:00	00:00:00	00:00:00	00:00:01

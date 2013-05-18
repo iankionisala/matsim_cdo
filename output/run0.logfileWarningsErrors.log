@@ -1,0 +1,14 @@
+2013-05-18 18:02:32,841  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,851  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-05-18 18:02:32,862  WARN QLinkImpl:551 Link 9499 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-05-18 18:02:32,862  WARN QLinkImpl:551 Link 9500 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-05-18 18:02:35,226  WARN QLinkImpl:551 Link 9499 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-05-18 18:02:35,226  WARN QLinkImpl:551 Link 9500 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
