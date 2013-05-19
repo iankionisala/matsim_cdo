@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Inserts records into database's table
  * @author Mugs and Coffee
@@ -50,7 +47,7 @@ public class ParseXML {
 		
 		// prepares prepared statement
 		prepStmt = this.Conn.prepareStatement("INSERT INTO eventLog SET `time`=" + mTime + ", `type`='" + mType + "', `person`=" + mPerson + ", vehicle=" + mVehicle + ", facility=" + mFacility + ", link=" + mLink + ", legmode='" + mLegmode + "'");
-//		System.out.println(prepStmt.toString());
+		
 		prepStmt.execute();
 		
 		} catch(SQLException e) {
