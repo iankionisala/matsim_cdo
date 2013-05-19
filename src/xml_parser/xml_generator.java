@@ -22,8 +22,9 @@ public class xml_generator {
 	private static int total_vehicle;
 	private static int minimum = 45;
 	
-	private static String filepath = "source/network_coordinates.txt";
-	
+//	private static String filepath = "source/network_coordinates.txt";
+	private static String filepath = "source/population_src/police_xy.txt";
+	static String[] result;
 	private static void build_frame(){
 
 		String h1 = "Xml Parser";
@@ -80,6 +81,31 @@ public class xml_generator {
 						    final TextField textFieldGen2 = new TextField();	
 						    textFieldGen2.setBounds(250, 180, 50, 25);
 						    container.add(textFieldGen2);
+						    
+						    DefaultComboBoxModel model = new DefaultComboBoxModel();
+			                
+						    System.out.println(result);
+						    
+						    
+						    for(int i=0; i<result.length;i++){
+						    	model.addElement("id: " + result[i]);
+						    }
+						    
+						    
+//			                int i = 0;
+//						    for (String[] row : result) {
+//					        	
+//						    	model.addElement("id: " + i);
+//					        	i++;
+//					        }
+						    
+			                JComboBox comboBox = new JComboBox(model);
+			                comboBox.setBounds(200, 200, 100, 25);
+			                container.add(comboBox);
+			                
+			                
+						   
+			                
 						
 						rollDice = new JButton("Submt");
 						rollDice.setSize(100,30);
@@ -93,10 +119,7 @@ public class xml_generator {
 				            	
 				            	int maximum = total_vehicle + minimum;
 				            	
-				            	file_handler file = new file_handler("" + filepath);
-				        		String[] result = file.parse_data();
-				        		
-				        		
+				            	
 				        		
 
 				            	String population = "\n";
@@ -105,25 +128,21 @@ public class xml_generator {
 				            		
 				            		int cnt = 150;
 					        		
-					            	int origin = 0 + (int)(Math.random()* cnt );
+					            	int origin = 0 + (int)(Math.random()* 8 );
 					            	int destination = 0 + (int)(Math.random()* cnt );
 					            	
-					            	while( is_thesame(origin, destination) ){
-					            		destination = 0 + (int)(Math.random()* cnt );
-					            	}
-				            		
 				            	    
 				            		population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
 				            		population = population + "\t\t<person id=\""+ (minimum+i+1) +"\" employed=\"yes\">\n";
 				            				population = population + "\t\t\t<plan selected=\"yes\">\n";
-				            					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" "+ result[origin].replace("\n", "").replace("\r", "") +" end_time=\"07:00:00\" />\n";
+				            					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" "+ result[origin] +"  end_time=\"07:00:00\" />\n";
 				            					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\"07:00:00\">\n";
 				            					population = population + "\t\t\t\t\t</leg>\n";
-				            					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" "+ result[destination].replace("\n", "").replace("\r", "") +" end_time=\"17:00:00\" />\n";
+				            					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\"2368575.0885537993\" y=\"885885.5658242189\" end_time=\"17:00:00\" />\n";
 				            					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\"17:00:00\">\n";
 				            					population = population + "\t\t\t\t\t</leg>\n";
-				            					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" "+ result[origin].replace("\n", "").replace("\r", "") +" />\n";
+				            					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" "+ result[origin] +" />\n";
 				            				population = population + "\t\t\t</plan>\n";
 
 				            		population = population + "\t\t</person>\n\n";
@@ -170,7 +189,9 @@ public class xml_generator {
 	}
 	
 	public static void main(String[] args) {
-
+		file_handler file = new file_handler("" + filepath);
+		result = file.parse_data();
+		
 		build_frame();
 	}
 	

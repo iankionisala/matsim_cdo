@@ -93,20 +93,38 @@ public class file_handler {
 	
 	private String[] read_file(){
         String parsed_text = read_textfile();
+        
         String[] array = parsed_text.split("\n"); 
         
-        int i=0;
-        int n = parsed_text.length();
-       
-        String[] result = new String[n];
-    	
-        for (String row : array) {
-        	
-        	result[i] =  row;
-        	i++;
-        }
+   
+        int n = array.length;
+        System.out.println(n);
+        String[][] result = new String[n][3];
         
-        return result;
+        
+        String[] index = null;
+        
+        for(int i=0; i<n; i++){
+        	index = array[i].split("\\s");
+        	System.out.println(index[2]);
+        }
+        System.out.println("t:" + index[2]);
+        
+//        for (String row : array) {
+//        	String[] index = parsed_text.split("\\s");
+//        	
+//        	int nq = 0;
+//        	for (String column : index) {
+//        		System.out.println(column);
+//        		
+//        		result[i][nq] =  column;
+//        		nq++;
+//        		break;
+//        	}
+//        	i++;
+//        }
+        
+        return index;
 	}
 	
 	public String read_textfile() {
