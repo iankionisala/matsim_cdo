@@ -32,7 +32,7 @@ public class ReadXML {
 			for (int temp = 0; temp < nList.getLength(); temp++) {		 
 				Node nNode = nList.item(temp);		 
 				System.out.println("\nCurrent Element :" + nNode.getNodeName());
-				System.out.println("----------------------------");
+//				System.out.println("----------------------------");
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {		 
 					Element eElement = (Element)nNode;					 
 					System.out.println("Time : " + eElement.getAttribute("time"));
