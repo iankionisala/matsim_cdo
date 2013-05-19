@@ -18,6 +18,8 @@ public class LayoutBuilder {
 	private Dimension screenSize;
 	public int _mheight;		
 	public int _width;
+	public int xlocation;
+	public int ylocation;
 	
 	
 	
@@ -36,8 +38,8 @@ public class LayoutBuilder {
   		int hsize = height;
   		int wsize = _width;
   		
-  		int xlocation = (scrnwidth/2)-(wsize/2);
- 	    int ylocation = ( scrnheight/2 ) - ( (hsize/2)+20);
+  		xlocation = (scrnwidth/2)-(wsize/2);
+ 	    ylocation = ( scrnheight/2 ) - ( (hsize/2)+20);
 		container.setBackground(new Color(0xFFFFFF));	
 		container.setLayout(null);	
 		
@@ -60,9 +62,9 @@ public class LayoutBuilder {
 		
 	}
 	
-	protected JButton buildJButton( int height, int width , int xlocation, int ylocation){
+	protected JButton buildJButton( String title, int height, int width , int xlocation, int ylocation){
 		
-		JButton jb = new JButton("Submt");
+		JButton jb = new JButton( title );
 		jb.setSize( height ,width);
 		jb.setLocation( xlocation , ylocation);
 		return jb;
