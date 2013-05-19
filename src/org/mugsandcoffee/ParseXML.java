@@ -7,6 +7,14 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Inserts records into database's table
+ * @author Mugs and Coffee
+ * @coder Kenneth "digiArtist_ph" P. Vallejos
+ * @since Sunday, May 19, 2013
+ * @version 1.0
+ *
+ */
 public class ParseXML {
 	
 	private String mServer;

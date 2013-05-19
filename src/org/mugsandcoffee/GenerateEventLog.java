@@ -4,6 +4,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 
+/**
+ * Reads xml file elements and loads into database's table
+ * @author Mugs and Coffee
+ * @coder Kenneth "digiArtist_ph" P. Vallejos
+ * @since Sunday, May 19, 2013
+ * @version 1.0
+ *
+ */
 public final class GenerateEventLog {
 
 	/**

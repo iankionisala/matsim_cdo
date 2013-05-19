@@ -8,6 +8,14 @@ import org.w3c.dom.NodeList;
 //import org.w3c.dom.Element;
 import java.io.File;
 
+/**
+ * Reads xml file and converts into DOM
+ * @author Mugs and Coffee
+ * @coder Kenneth "digiArtist_ph" P. Vallejos
+ * @since Sunday, May 19, 2013
+ * @version 1.0
+ *
+ */
 public class StreamReader {
 	
 	private File eventFile;
@@ -15,11 +23,6 @@ public class StreamReader {
 	private DocumentBuilder docGenerator;
 	private Document objDOM;
 	
-//	File fXmlFile = new File("./input/parse/run0.0.events.xml");		
-//	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-//	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-//	Document doc = dBuilder.parse(fXmlFile);
-
 	public StreamReader(String evtFile) {
 		
 		try {
