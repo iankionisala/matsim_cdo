@@ -34,8 +34,8 @@ public class ParseXML {
 		}
 		
 	}
-	
 	public void insertEvent(float mTime, String mType, int mPerson, int mVehicle, int mFacility, int mLink, String mLegmode) {
+//	public void insertEvent(String mTime, String mType, String mPerson, String mVehicle, String mFacility, String mLink, String mLegmode) {
 		
 		try {
 			PreparedStatement prepStmt = null;
