@@ -45,7 +45,7 @@ public final class GenerateEventLog {
 				String l_acttype = ((eElement.getAttribute("actType") != "") ? eElement.getAttribute("actType") : "");
 				String l_legmode = ((eElement.getAttribute("legMode") != "") ? eElement.getAttribute("legMode"): "");
 				
-				pxml.insertEvent(l_time, l_type, l_person, l_vehicle, l_facility, l_link, l_legmode);
+				pxml.insertEvent(l_time, l_type, l_person, l_vehicle, l_facility, l_link, l_acttype, l_legmode);
 			}
 		}
 		
