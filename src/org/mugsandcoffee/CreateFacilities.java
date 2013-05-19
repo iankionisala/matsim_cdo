@@ -23,14 +23,14 @@ public class CreateFacilities {
 	
 	private final static Logger log = Logger.getLogger(CreateFacilities.class);
 	private Scenario scenario;
-	private String mCensusFile;
+
 	private String mBusinessCensusFile;
+	private String mOutputFacilities_path;
 	
 	public CreateFacilities() {
 		
-		this.mCensusFile = "./input/census.txt";
-		this.mBusinessCensusFile = "./input/business_census.txt";
-		
+		this.mBusinessCensusFile = "./source/facilities_src/business_census.txt";
+		this.mOutputFacilities_path = "./input/facilities.xml.gz";
 	}
 	
 	public void generateFacilities() {
@@ -52,17 +52,9 @@ public class CreateFacilities {
 	}
 	
 	private void run() {
-		/*
-		 * Read the business census for work, shop, leisure and education facilities
-		 */
-		int startIndex = this.readBusinessCensus();
-		
-		/*
-		 * Read the census for home facilities. Other sources such as official dwelling directories could be used as well.
-		 * Usually some aggregation should be done. In this example we simply add every home location as a facility.
-		 */
-		//this.readCensus(startIndex);
-		
+
+		this.readBusinessCensus();
+	
 	}
 	
 	private int readBusinessCensus() {
@@ -99,31 +91,6 @@ public class CreateFacilities {
 		return cnt;
 	}
 	
-	private void readCensus(int startIndex) {
-		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(this.mCensusFile));
-			String line = bufferedReader.readLine(); //skip header
-			
-			int index_xHomeCoord = 10;
-			int index_yHomeCoord = 11;
-			
-			int cnt = 0;
-			while ((line = bufferedReader.readLine()) != null) {
-				String parts[] = line.split("\t");
-				
-				Coord homeCoord = new CoordImpl(Double.parseDouble(parts[index_xHomeCoord]),
-						Double.parseDouble(parts[index_yHomeCoord]));
-				
-				ActivityFacility facility = ((ScenarioImpl)this.scenario).getActivityFacilities().createAndAddFacility(new IdImpl(startIndex + cnt), homeCoord);
-				addActivityOption(facility, "home");
-				cnt++;
-			}
-			
-		} // end try
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	private void addActivityOption(ActivityFacility facility, String type) {
 		((ActivityFacilityImpl) facility).createActivityOption(type);
@@ -153,7 +120,7 @@ public class CreateFacilities {
 	}
 		
 	public void write() {
-		new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write("./output/facilities.xml.gz");
+		new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write(this.mOutputFacilities_path);
 	}
 
 }
