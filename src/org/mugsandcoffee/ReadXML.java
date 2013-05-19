@@ -34,11 +34,15 @@ public class ReadXML {
 				System.out.println("\nCurrent Element :" + nNode.getNodeName());
 				System.out.println("----------------------------");
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {		 
-					Element eElement = (Element) nNode;					 
+					Element eElement = (Element)nNode;					 
 					System.out.println("Time : " + eElement.getAttribute("time"));
 					System.out.println("Act Type: " +  eElement.getAttribute("type"));
-					System.out.println("Person: " +  eElement.getAttribute("person"));
+					System.out.println("Person: " + eElement.getAttribute("person"));
+					System.out.println("Vehicle: " + eElement.getAttribute("vehicle"));
 					System.out.println("Facility: " +  eElement.getAttribute("facility"));
+					System.out.println("Link : " +  eElement.getAttribute("link"));
+					System.out.println("Leg Mode: " + eElement.getAttribute("legMode"));
+					
 		 
 				}
 			}
