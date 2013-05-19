@@ -1,13 +1,16 @@
 package org.menu_builder;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
-import xml_parser.file_handler;
+import org.mugsandcoffee.CreateFacilities;
+import org.mugsandcoffee.CreateNetwork;
+import org.mugsandcoffee.CreateOutput;
+
 
 public class mainMenu {
 	
@@ -21,15 +24,21 @@ public class mainMenu {
 		Color color= null;
 		color = color.red;
 		
-//		JLabel lbl = layout.buildJLabel("dsffsd", font, 50, 50, color, 20, 20);
-//		layout.addbuilder(lbl);
+		JLabel lbl = layout.buildJLabel("Matsim Project", font, 120, 15, color, 235, 10);
+		layout.addbuilder(lbl);
 		
 		JButton btn = layout.buildJButton("Create Network", 150, 50, 40, 50);
 		layout.addbuilder(btn);
 		
 		btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	 
+        		/* Create network.xml */
+            	CreateNetwork network = new CreateNetwork();
+            	network.generateNetwork();
+            	
+            	JOptionPane.showMessageDialog(null, "Successfully Created network.xml");
+            	
             }
         });
 		
@@ -39,7 +48,13 @@ public class mainMenu {
 		
 		btn2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	 
+        		/* Create facilities.xml */
+            	CreateFacilities facilities = new CreateFacilities();
+            	facilities.generateFacilities();
+            	
+            	JOptionPane.showMessageDialog(null, "Successfully Created facilities.xml");
+            	
             }
         });
 		
@@ -48,7 +63,7 @@ public class mainMenu {
 		
 		btn3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	 JOptionPane.showMessageDialog(null, "Create Population");
             }
         });
 		
@@ -57,7 +72,13 @@ public class mainMenu {
 		
 		btn4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	 
+        		/* Create output files */
+        		CreateOutput output = new CreateOutput();
+        		output.generateOutput(); 
+        		
+        		JOptionPane.showMessageDialog(null, "Successfully Created Output Folder");
+            	
             }
         });
 		

@@ -1,5 +1,8 @@
 package org.mugsandcoffee;
 
+import java.io.File;
+import java.io.FileReader;
+
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.core.api.experimental.network.NetworkWriter;
@@ -35,8 +38,39 @@ public class CreateNetwork {
 	      OsmNetworkReader onr = new OsmNetworkReader(net,ct);
 	      onr.parse(osm); 
 	      new NetworkCleaner().run(net);
-	      new NetworkWriter(net).write(this.mOutputNetwork);
+	      
+	      if(this.is_readable(this.mOutputNetwork)) {
+	    	  File file = new File(this.mOutputNetwork); 
+	    	  
+	    	  file.delete();
+	    	  new NetworkWriter(net).write(this.mOutputNetwork);
+	    	  
+	      }  else {
+	    	  
+	    	  new NetworkWriter(net).write(this.mOutputNetwork);
+	    	  
+	      }
 	
+	}
+	
+	private boolean is_readable(String path){
+		
+		File file = new File(path); 
+		
+		if ( !file.exists() ) 
+            return false;
+        if ( !file.canRead() )
+            return false;
+        try{
+	        FileReader fileReader = new FileReader(file.getAbsolutePath());
+	        fileReader.read();
+	        fileReader.close();
+	    } catch (Exception e) {
+	    	System.out.println("Exception when checked file can read with message: " + e.getMessage());
+	        return false;
+	    }
+        
+        return true;
 	}
 
 }
