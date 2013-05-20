@@ -1,0 +1,47 @@
+﻿DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_retrieve_links` $$
+CREATE PROCEDURE `sp_retrieve_links`()
+  BEGIN
+    DECLARE record_not_found INT DEFAULT 0;
+    DECLARE l_agent INT(11);
+    DECLARE l_timefrom DECIMAL(8,1);
+    DECLARE l_timeto DECIMAL(8,1);
+    DECLARE l_links MEDIUMTEXT DEFAULT NULL;
+    DECLARE l_distance DECIMAL(15,12) DEFAULT 0.0;
+
+    DECLARE curRoute CURSOR FOR SELECT agent, links, distance, timefrom, timeto FROM route;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET record_not_found = 1;
+    DECLARE EXIT HANDLER FOR SQLWARNING ROLLBACK;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION ROLLBACK;
+
+
+    START TRANSACTION;
+
+      /* traverse each record of route */
+      OPEN curRoute;
+
+      route_loop:LOOP
+
+          FETCH curRoute INTO l_agent, l_links, l_distance, l_timefrom, l_timeto;
+
+          IF record_not_found = 1 THEN
+            LEAVE route_loop;
+          END IF;
+
+          /* block of links */
+          BEGIN
+            DECLARE curLink CURSOR FOR SELECT DISTINCT link FROM eventlog WHERE person = l_agent AND `time` BETWEEN l_timefrom AND l_timeto ORDER BY `time` ASC;
+
+          END;
+          /* end of block of links */
+
+      END LOOP route_loop;
+
+      CLOSE curRoute;
+
+    COMMIT;
+
+  END $$
+
+DELIMITER;
