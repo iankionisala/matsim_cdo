@@ -37,15 +37,15 @@ public final class GenerateEventLog {
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {		 
 				Element eElement = (Element)nNode;	
 				float l_time = (float) ((eElement.getAttribute("time") != "") ? Float.parseFloat(eElement.getAttribute("time")) : 0.0);
-				String l_type =  ((eElement.getAttribute("type") != "") ? eElement.getAttribute("legMode"): "");
+				String l_type =  ((eElement.getAttribute("type") != "") ? eElement.getAttribute("type"): "");
 				int l_person = (int)((eElement.getAttribute("person") !="") ? Integer.parseInt(eElement.getAttribute("person")) : 0);
 				int l_vehicle = (int)((eElement.getAttribute("vehicle") !="") ? Integer.parseInt(eElement.getAttribute("vehicle")): 0);
 				int l_facility = (int)((eElement.getAttribute("facility") != "") ? Integer.parseInt(eElement.getAttribute("facility")) : 0);
 				int l_link = (int)((eElement.getAttribute("link") !="") ? Integer.parseInt(eElement.getAttribute("link")) : 0);
+				String l_acttype = ((eElement.getAttribute("actType") != "") ? eElement.getAttribute("actType") : "");
 				String l_legmode = ((eElement.getAttribute("legMode") != "") ? eElement.getAttribute("legMode"): "");
-								
-				pxml.insertEvent(l_time, l_type, l_person, l_vehicle, l_facility, l_link, l_legmode);
-
+				
+				pxml.insertEvent(l_time, l_type, l_person, l_vehicle, l_facility, l_link, l_acttype, l_legmode);
 			}
 		}
 		

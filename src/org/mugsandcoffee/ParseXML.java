@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  * Inserts records into database's table
  * @author Mugs and Coffee
@@ -42,21 +39,27 @@ public class ParseXML {
 		}
 		
 	}
-	public void insertEvent(float mTime, String mType, int mPerson, int mVehicle, int mFacility, int mLink, String mLegmode) {
+	public void insertEvent(float mTime, String mType, int mPerson, int mVehicle, int mFacility, int mLink, String mActtype, String mLegmode) {
 //	public void insertEvent(String mTime, String mType, String mPerson, String mVehicle, String mFacility, String mLink, String mLegmode) {
 		
 		try {
 			PreparedStatement prepStmt = null;
 		
 		// prepares prepared statement
-		prepStmt = this.Conn.prepareStatement("INSERT INTO eventLog SET `time`=" + mTime + ", `type`='" + mType + "', `person`=" + mPerson + ", vehicle=" + mVehicle + ", facility=" + mFacility + ", link=" + mLink + ", legmode='" + mLegmode + "'");
-//		System.out.println(prepStmt.toString());
+		prepStmt = this.Conn.prepareStatement("INSERT INTO eventLog SET `time`=" + mTime + ", `type`='" + mType + "', `person`=" + mPerson + ", vehicle=" + mVehicle + ", facility=" + mFacility + ", link=" + mLink + ", acttype='" + mActtype + "', legmode='" + mLegmode + "'");		
 		prepStmt.execute();
+//		prepStmt.ex
+		// closes the db connection
+		this.Conn.close();
 		
 		} catch(SQLException e) {
 			System.out.println("insertEvent: " + e.getMessage());
 		}
 		
+		
+	}
+	
+	public void closeConnection() {
 		
 	}
 
