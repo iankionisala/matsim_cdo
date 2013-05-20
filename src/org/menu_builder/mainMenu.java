@@ -5,7 +5,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
+import xml_parser.*;
 
 import javax.swing.*;
 
@@ -14,12 +20,33 @@ import org.mugsandcoffee.CreateNetwork;
 import org.mugsandcoffee.CreateOutput;
 import org.mugsandcoffee.CreatePopulation;
 
+import xml_parser.file_handler;
+
+import com.mysql.jdbc.Statement;
+
 
 public class mainMenu {
 	
+	private static String mServer;
+	private static String mDatabase;
+	private static String mUser;
+	private static String mPword;
+	private static Connection Conn;
+	
 	
 	private static LayoutBuilder layout;
+	
+	public mainMenu() {
+		// loads the default connetion details
+		mServer = "jdbc:mysql://localhost:3306/";
+		mDatabase = "matsim";
+		mUser = "root";
+		mPword = "";
+		
+	}
+	
 
+	
 	public static void main(String[] args) {
 		layout = new LayoutBuilder( 350, 800, "Mam Bing Menu");
 		
@@ -92,7 +119,27 @@ public class mainMenu {
 		
 		btn5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	String numRoad = JOptionPane.showInputDialog("Enter how many Road Closure you want");
+            	int totalCount = Integer.parseInt(numRoad);
+
+            	String facility = null;
+            	facility = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+            	facility = facility + "<networkChangeEvents xmlns=\"http://www.matsim.org/files/dtd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/networkChangeEvents.xsd\">\n";
+            	for(int i=0; i<totalCount;i++){
+            		
+            		String timeget = JOptionPane.showInputDialog("Enter time");
+            		String idget = JOptionPane.showInputDialog("Enter id");
+            		
+            		facility = facility + "\n\t<networkChangeEvent startTime=\""+ timeget +"\">\n";
+            		facility = facility + "\t\t<link refId=\""+ idget +"\"/>\n";
+            		facility = facility + "\t\t<freespeed type=\"absolute\" value=\"0.0\"/>\n";
+            		facility = facility + "\t</networkChangeEvent>\n\n";
+            	}
+            	
+            	facility = facility + "</networkChangeEvents>";
+            	file_handler file2 = new file_handler( "../input/roadClosure.xml" );
+        		file2.create_file( facility );
+        		
             }
         });
 		
@@ -104,7 +151,9 @@ public class mainMenu {
             public void actionPerformed(ActionEvent arg0) {
             	String numvehicles = JOptionPane.showInputDialog("Please input Total No. of Vehicles");
             	int numvec = Integer.parseInt(numvehicles);
-            	createAddedPopulation(numvec);
+            	String pop = createAddedPopulation(numvec);
+            	file_handler file2 = new file_handler( "../input/NewPopulation.xml" );
+        		file2.create_file( pop );
             }
         });
 		
@@ -122,9 +171,10 @@ public class mainMenu {
 		
 	}
 	
-	private static void createAddedPopulation(int numvehicle){
+	private static String createAddedPopulation(int numvehicle){
+		String population = "";
+		
 
-	    
 		for(int i=0; i<numvehicle; i++){
 			
 			int choice = 0 + (int)(Math.random()*3);
@@ -160,8 +210,31 @@ public class mainMenu {
 				}
 				
 				System.out.println("2 7-9:" +hms2);
-			    
 				
+				
+				population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
+
+        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+        				population = population + "\t\t\t<plan selected=\"yes\">\n";
+													        				String parsed_text = selectEvent();
+													        				String[] result;
+													        				result = parsed_text.split(",");
+        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\"  end_time=\""+ hms +"\" />\n";
+        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms  +"\">\n";
+        					population = population + "\t\t\t\t\t</leg>\n";
+												        					String parsed_text2 = selectEvent();
+													        				String[] result2;
+													        				result2 = parsed_text2.split(",");
+        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
+        					population = population + "\t\t\t\t\t</leg>\n";
+        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
+        				population = population + "\t\t\t</plan>\n";
+
+        		population = population + "\t\t</person>\n\n";
+        	
+        		population = population + "\n\n";
+        		
 			}else if (choice==1) {
 			    	
 			    	int min = 1 + (int)(Math.random()*59);
@@ -192,8 +265,31 @@ public class mainMenu {
 
 				    		
 					}
-					
+				
+				
 					System.out.println("2 13-17:" +hms2);
+					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
+
+	        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
+														        				String parsed_text = selectEvent();
+														        				String[] result;
+														        				result = parsed_text.split(",");
+	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\"  end_time=\""+ hms +"\" />\n";
+	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms  +"\">\n";
+	        					population = population + "\t\t\t\t\t</leg>\n";
+													        					String parsed_text2 = selectEvent();
+														        				String[] result2;
+														        				result2 = parsed_text2.split(",");
+	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
+	        					population = population + "\t\t\t\t\t</leg>\n";
+	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
+	        				population = population + "\t\t\t</plan>\n";
+
+	        		population = population + "\t\t</person>\n\n";
+	        	
+	        		population = population + "\n\n";
 			}else{
 				
 			    	int min = 1 + (int)(Math.random()*59);
@@ -226,16 +322,71 @@ public class mainMenu {
 					}
 					
 					System.out.println("2  17-24:" +hms2);
+					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
+
+	        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
+														        				String parsed_text = selectEvent();
+														        				String[] result;
+														        				result = parsed_text.split(",");
+	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\"  end_time=\""+ hms +"\" />\n";
+	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms  +"\">\n";
+	        					population = population + "\t\t\t\t\t</leg>\n";
+													        					String parsed_text2 = selectEvent();
+														        				String[] result2;
+														        				result2 = parsed_text2.split(",");
+	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
+	        					population = population + "\t\t\t\t\t</leg>\n";
+	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
+	        				population = population + "\t\t\t</plan>\n";
+
+	        		population = population + "\t\t</person>\n\n";
+	        	
+	        		population = population + "\n\n";
 			}
 			
-			JOptionPane.showMessageDialog(null, "addedPopulation ");
 		}
 		
-		
+		return population;
 	}
 	
 	
-	
+	public static String selectEvent() {
+		String dbURL = "jdbc:mysql://localhost:3306/matsim";
+        String username ="root";
+        String password = "root";
+       
+        Connection dbCon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+       
+        String query ="SELECT * FROM `nodes` ORDER BY RAND() LIMIT 0,1";
+       
+        try {
+            //getting database connection to MySQL server
+            dbCon = DriverManager.getConnection(dbURL, username, "");
+           
+            //getting PreparedStatment to execute query
+            stmt = dbCon.prepareStatement(query);
+           
+            //Resultset returned by query
+            rs = stmt.executeQuery(query);
+            String x = null;
+            String y = null;
+            while(rs.next()){
+            	x = rs.getString("x");
+                y = rs.getString("y");
+            }
+            String s= "";
+            s = x + "," + y;
+            return s;
+           
+        } catch (SQLException ex) {
+           
+        } 
+		return "";
+	}
 	
 	
 }
