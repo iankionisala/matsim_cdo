@@ -24,7 +24,7 @@ public class xml_generator {
 	
 //	private static String filepath = "source/network_coordinates.txt";
 	private static String filepath = "source/population_src/police_xy.txt";
-	static String[] result;
+	static String result;
 	private static void build_frame(){
 
 		String h1 = "Xml Parser";
@@ -84,20 +84,16 @@ public class xml_generator {
 						    
 						    DefaultComboBoxModel model = new DefaultComboBoxModel();
 			                
-						    System.out.println(result);
+						  				    
+							String[] arr = result.split("\\s");
+							
+							int count = arr.length - 1;
+							for(int k = 1; k <= count; k++) {
+								
+								model.addElement(arr[k]);
+								
+							}
 						    
-						    
-						    for(int i=0; i<result.length;i++){
-						    	model.addElement("id: " + result[i]);
-						    }
-						    
-						    
-//			                int i = 0;
-//						    for (String[] row : result) {
-//					        	
-//						    	model.addElement("id: " + i);
-//					        	i++;
-//					        }
 						    
 			                JComboBox comboBox = new JComboBox(model);
 			                comboBox.setBounds(200, 200, 100, 25);
@@ -124,7 +120,7 @@ public class xml_generator {
 
 				            	String population = "\n";
 				            	
-				            	for(int i=0; i<total_vehicle;i++){
+/*				            	for(int i=0; i<total_vehicle;i++){
 				            		
 				            		int cnt = 150;
 					        		
@@ -147,7 +143,7 @@ public class xml_generator {
 
 				            		population = population + "\t\t</person>\n\n";
 				            			
-				            	}
+				            	}*/
 				            	
 				            	population = population + "\n\n";
 				            			            	

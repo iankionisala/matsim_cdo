@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.Scanner;
 
 public class file_handler {
@@ -16,6 +18,9 @@ public class file_handler {
 	private static String _mcur_dir;
 	private File file;
 	private FileReader fileReader;
+	
+	public String[] result;
+	public String out = "";
 	
 	file_handler(String file_path){
 		_mfile_name = file_path;
@@ -81,7 +86,7 @@ public class file_handler {
 	}
 	
 
-	protected String[] parse_data(){
+	protected String parse_data(){
 		if ( is_readable() ){
 			return read_file();
 		}else{
@@ -91,40 +96,20 @@ public class file_handler {
 		
 	}
 	
-	private String[] read_file(){
-        String parsed_text = read_textfile();
+	private String read_file(){
+		
+		String parsed_text = read_textfile();
+		
+		result = parsed_text.split("\n"); 
+		for(int i = 0; i < result.length; i++) {
+			
+			String[] res = result[i].split("\\s");
+		
+			 out = out + " " +res[2];
+		}
+		
+		return out;
         
-        String[] array = parsed_text.split("\n"); 
-        
-   
-        int n = array.length;
-        System.out.println(n);
-        String[][] result = new String[n][3];
-        
-        
-        String[] index = null;
-        
-        for(int i=0; i<n; i++){
-        	index = array[i].split("\\s");
-        	System.out.println(index[2]);
-        }
-        System.out.println("t:" + index[2]);
-        
-//        for (String row : array) {
-//        	String[] index = parsed_text.split("\\s");
-//        	
-//        	int nq = 0;
-//        	for (String column : index) {
-//        		System.out.println(column);
-//        		
-//        		result[i][nq] =  column;
-//        		nq++;
-//        		break;
-//        	}
-//        	i++;
-//        }
-        
-        return index;
 	}
 	
 	public String read_textfile() {
