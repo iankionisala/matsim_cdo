@@ -5,11 +5,13 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.TextField;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class LayoutBuilder {
 	
@@ -20,6 +22,8 @@ public class LayoutBuilder {
 	public int _width;
 	public int xlocation;
 	public int ylocation;
+	public int scrnheight;
+	public int scrnwidth;
 	
 	
 	
@@ -32,8 +36,8 @@ public class LayoutBuilder {
 		_mheight = height;
 		_width = width;
 		
-		int scrnheight = screenSize.height;		
-  		int scrnwidth = screenSize.width;
+		scrnheight = screenSize.height;		
+  		scrnwidth = screenSize.width;
   		
   		int hsize = height;
   		int wsize = _width;
@@ -51,7 +55,7 @@ public class LayoutBuilder {
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );	
 	}
 	
-	protected JLabel buildJLabel(String title, Font font, int Jlbl_height, int Jlbl_width, Color color, int xlocation, int ylocation){
+	public JLabel buildJLabel(String title, Font font, int Jlbl_height, int Jlbl_width, Color color, int xlocation, int ylocation){
 		JLabel JLbl;
 		JLbl = new JLabel(title);
 		JLbl.setFont(font);
@@ -62,7 +66,7 @@ public class LayoutBuilder {
 		
 	}
 	
-	protected JButton buildJButton( String title, int height, int width , int xlocation, int ylocation){
+	public JButton buildJButton( String title, int height, int width , int xlocation, int ylocation){
 		
 		JButton jb = new JButton( title );
 		jb.setSize( height ,width);
@@ -70,7 +74,15 @@ public class LayoutBuilder {
 		return jb;
 	}
 	
-	protected void addbuilder(Component comp){
+	public TextField buildJTextField( String title, int height, int width , int xlocation, int ylocation ){
+		TextField textfld = new TextField( title );	
+		textfld.setSize( 20 ,20);
+		textfld.setLocation( 20 , 20);
+	    return textfld;
+	    
+	}
+	
+	public void addbuilder(Component comp){
 		 
 		 container.add(comp);
 	}

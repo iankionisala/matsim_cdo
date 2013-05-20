@@ -84,7 +84,7 @@ public class xml_generator {
 						    
 						    DefaultComboBoxModel model = new DefaultComboBoxModel();
 			                
-						  				    
+						  	System.out.println(result);
 							String[] arr = result.split("\\s");
 							
 							int count = arr.length - 1;

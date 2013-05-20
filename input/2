@@ -1,31 +1,0 @@
-
-<!-- =============================== random0 ======================================= -->
-
-		<person id="46" employed="yes">
-			<plan selected="yes">
-				<act type="origin" facility="0" x="2369755.79361"	y="888529.79714"	  end_time="07:00:00" />
-					<leg mode="car" dep_time="07:00:00">
-					</leg>
-				<act type="destination" facility="19" x="2368575.0885537993" y="885885.5658242189" end_time="17:00:00" />
-					<leg mode="car" dep_time="17:00:00">
-					</leg>
-				<act type="origin" facility="0" x="2369755.79361"	y="888529.79714"	 />
-			</plan>
-		</person>
-
-<!-- =============================== random1 ======================================= -->
-
-		<person id="47" employed="yes">
-			<plan selected="yes">
-				<act type="origin" facility="0" x="2368640.97936"	y="890271.56876"  end_time="07:00:00" />
-					<leg mode="car" dep_time="07:00:00">
-					</leg>
-				<act type="destination" facility="19" x="2368575.0885537993" y="885885.5658242189" end_time="17:00:00" />
-					<leg mode="car" dep_time="17:00:00">
-					</leg>
-				<act type="origin" facility="0" x="2368640.97936"	y="890271.56876" />
-			</plan>
-		</person>
-
-
-

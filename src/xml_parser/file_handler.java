@@ -22,7 +22,7 @@ public class file_handler {
 	public String[] result;
 	public String out = "";
 	
-	file_handler(String file_path){
+	public file_handler(String file_path){
 		_mfile_name = file_path;
 
 		
@@ -66,7 +66,7 @@ public class file_handler {
         return true;
 	}
 	
-	protected void create_file(String datatofile){
+	public void create_file(String datatofile){
 		
 		if ( is_writable() ){
 
@@ -86,7 +86,7 @@ public class file_handler {
 	}
 	
 
-	protected String parse_data(){
+	public String parse_data(){
 		if ( is_readable() ){
 			return read_file();
 		}else{
@@ -100,15 +100,16 @@ public class file_handler {
 		
 		String parsed_text = read_textfile();
 		
-		result = parsed_text.split("\n"); 
-		for(int i = 0; i < result.length; i++) {
-			
-			String[] res = result[i].split("\\s");
-		
-			 out = out + " " +res[2];
-		}
-		
-		return out;
+//		result = parsed_text.split("\n"); 
+//		for(int i = 0; i < result.length; i++) {
+//			
+//			String[] res = result[i].split("\\s");
+//		
+//			 out = out + " " +res[2];
+////			 out = out + " " + res[0] + "," +res[1]+ ","+ res[2] ;
+//		}
+//		
+		return parsed_text;
         
 	}
 	
