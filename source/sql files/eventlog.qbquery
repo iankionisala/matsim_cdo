@@ -1,0 +1,7 @@
+﻿-- SELECT * FROM eventlog e;
+-- SELECT DISTINCT person FROM eventlog ORDER BY person ASC;
+-- SELECT * FROM eventlog WHERE person=0 AND acttype IN ('origin', 'destination');
+-- SELECT * FROM eventlog WHERE person=8
+#SELECT * FROM eventlog WHERE
+-- SELECT DISTINCT person FROM eventlog ORDER BY person ASC;
+SELECT * FROM eventlog WHERE (person BETWEEN 0 AND 45) AND acttype IN ('origin', 'destination');

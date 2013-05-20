@@ -1,0 +1,2 @@
+﻿-- SELECT * FROM eventlog WHERE person=10 AND `time` BETWEEN 5400.0 AND 5451.0; #acttype IN ('origin', 'destination');
+SELECT DISTINCT link FROM eventlog WHERE person=10 AND `time` BETWEEN 5400.0 AND 5451.0 ORDER BY `time` ASC; #acttype IN ('origin', 'destination');
