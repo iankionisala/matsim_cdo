@@ -1,6 +1,8 @@
 package org.mugsandcoffee;
 
 import java.io.BufferedReader;
+
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import org.apache.log4j.Logger;
@@ -15,6 +17,7 @@ import org.matsim.core.facilities.ActivityOptionImpl;
 import org.matsim.core.facilities.FacilitiesWriter;
 import org.matsim.core.facilities.OpeningTimeImpl;
 import org.matsim.core.facilities.OpeningTime.DayType;
+import org.matsim.core.network.algorithms.NetworkCleaner;
 import org.matsim.core.scenario.ScenarioImpl;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.geometry.CoordImpl;
@@ -120,7 +123,41 @@ public class CreateFacilities {
 	}
 		
 	public void write() {
-		new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write(this.mOutputFacilities_path);
+		
+		
+	      if(this.is_readable(this.mOutputFacilities_path)) {
+	    	  File file = new File(this.mOutputFacilities_path); 
+	    	  
+	    	  file.delete();
+	    	  new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write(this.mOutputFacilities_path);
+	    	  
+	      }  else {
+	    	  
+	    	  new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write(this.mOutputFacilities_path);
+	    	  
+	      }
+	      
+		
+	}
+	
+	private boolean is_readable(String path){
+		
+		File file = new File(path); 
+		
+		if ( !file.exists() ) 
+            return false;
+        if ( !file.canRead() )
+            return false;
+        try{
+	        FileReader fileReader = new FileReader(file.getAbsolutePath());
+	        fileReader.read();
+	        fileReader.close();
+	    } catch (Exception e) {
+	    	System.out.println("Exception when checked file can read with message: " + e.getMessage());
+	        return false;
+	    }
+        
+        return true;
 	}
 
 }
