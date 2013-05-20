@@ -32,7 +32,7 @@ public class CreateFacilities {
 	
 	public CreateFacilities() {
 		
-		this.mBusinessCensusFile = "./source/facilities_src/business_census.txt";
+		this.mBusinessCensusFile = "./source/facilities_src/facilities_location.txt";
 		this.mOutputFacilities_path = "./input/facilities.xml.gz";
 	}
 	
