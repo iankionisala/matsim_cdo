@@ -1,11 +1,11 @@
-2013-05-20 20:56:48,288  INFO Gbl:53 JVM: 1.6.0_19; Sun Microsystems Inc.; mixed mode, sharing; 32-bit
-2013-05-20 20:56:48,288  INFO Gbl:57 OS: Windows NT (unknown); 6.2; x86
-2013-05-20 20:56:48,288  INFO Gbl:60 CPU cores: 4
-2013-05-20 20:56:48,288  INFO Gbl:61 max. Memory: 247.5MB (259522560B)
-2013-05-20 20:56:48,288  INFO Gbl:89 MATSim-Build: r23466 (2013-04-02 14:36:54)
-2013-05-20 20:56:48,288  INFO AbstractController:71 Used Controler-Class: org.matsim.core.controler.Controler
-2013-05-20 20:56:48,288  INFO AbstractController:203 Complete config dump directly after reading/getting the config file.  See later for config dump after setup.
-2013-05-20 20:56:48,304  INFO AbstractController:207 
+2013-05-21 13:57:40,709  INFO Gbl:53 JVM: 1.6.0_19; Sun Microsystems Inc.; mixed mode, sharing; 32-bit
+2013-05-21 13:57:40,710  INFO Gbl:57 OS: Windows NT (unknown); 6.2; x86
+2013-05-21 13:57:40,711  INFO Gbl:60 CPU cores: 4
+2013-05-21 13:57:40,713  INFO Gbl:61 max. Memory: 247.5MB (259522560B)
+2013-05-21 13:57:40,714  INFO Gbl:89 MATSim-Build: r23466 (2013-04-02 14:36:54)
+2013-05-21 13:57:40,715  INFO AbstractController:71 Used Controler-Class: org.matsim.core.controler.Controler
+2013-05-21 13:57:40,739  INFO AbstractController:203 Complete config dump directly after reading/getting the config file.  See later for config dump after setup.
+2013-05-21 13:57:40,756  INFO AbstractController:207 
 
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v1.dtd">
@@ -664,9 +664,9 @@ For 'queueSimulation', add a module 'simulation' to the config. -->
 
 </config>
 
-2013-05-20 20:56:48,304  INFO AbstractController:208 Complete config dump done.
-2013-05-20 20:56:48,304  INFO AbstractController:209 Checking consistency of config...
-2013-05-20 20:56:48,304  INFO PlanCalcScoreConfigGroup:399 NO OPENING OR CLOSING TIMES DEFINED!
+2013-05-21 13:57:40,767  INFO AbstractController:208 Complete config dump done.
+2013-05-21 13:57:40,768  INFO AbstractController:209 Checking consistency of config...
+2013-05-21 13:57:40,768  INFO PlanCalcScoreConfigGroup:399 NO OPENING OR CLOSING TIMES DEFINED!
 
 
 There is no activity type that has an opening *and* closing time (or opening time and late penalty) defined.
@@ -677,19 +677,16 @@ If you are using MATSim without time adaptation, you can ignore this warning.
 
 
 
-2013-05-20 20:56:48,304  INFO AbstractController:211 Checking consistency of config done.
-2013-05-20 20:56:48,335  INFO SnapshotWriterRegistrar:41 OTFVis snapshots will not be supported, as OTFVis is not part of the classpath.
-2013-05-20 20:56:48,351  INFO ScenarioLoaderImpl:135 loading scenario from base directory: C:\Users\tongbens01\Desktop\MATSimTutorial\workspace\matsim_cdo\
-2013-05-20 20:56:48,351  INFO ScenarioLoaderImpl:169 loading network from ./input/network.xml
-2013-05-20 20:56:48,351  INFO ScenarioLoaderImpl:172 use TimeVariantLinks in NetworkFactory.
-2013-05-20 20:56:48,351  INFO MatsimNetworkReader:83 using network_v1-reader.
-2013-05-20 20:56:48,351  INFO MatsimXmlParser:215 Trying to load http://www.matsim.org/files/dtd/network_v1.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
-2013-05-20 20:56:49,445  INFO ScenarioLoaderImpl:180 loading network change events from ./input/roadClosure.xml
-2013-05-20 20:56:49,461  INFO MatsimXmlParser:215 Trying to load http://www.matsim.org/files/dtd/networkChangeEvents.xsd. In some cases (e.g. network interface up but no connection), this may take a bit.
-2013-05-20 20:56:49,836  INFO MatsimXmlParser:215 Trying to load http://www.matsim.org/files/dtd/matsimCommon.xsd. In some cases (e.g. network interface up but no connection), this may take a bit.
-2013-05-20 20:56:50,211  WARN NetworkChangeEventsParser:181 Link null not found!
-2013-05-20 20:56:50,211  WARN AbstractController$2:79 Getting uncaught Exception in Thread AWT-EventQueue-0
-org.matsim.core.utils.io.UncheckedIOException: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: 'null' is not a valid value for 'time'.
+2013-05-21 13:57:40,769  INFO AbstractController:211 Checking consistency of config done.
+2013-05-21 13:57:40,811  INFO SnapshotWriterRegistrar:41 OTFVis snapshots will not be supported, as OTFVis is not part of the classpath.
+2013-05-21 13:57:40,865  INFO ScenarioLoaderImpl:135 loading scenario from base directory: C:\Users\tongbens01\Desktop\MATSimTutorial\workspace\matsim_cdo\
+2013-05-21 13:57:40,866  INFO ScenarioLoaderImpl:169 loading network from ./input/network.xml
+2013-05-21 13:57:40,867  INFO ScenarioLoaderImpl:172 use TimeVariantLinks in NetworkFactory.
+2013-05-21 13:57:40,877  INFO MatsimNetworkReader:83 using network_v1-reader.
+2013-05-21 13:57:40,877  INFO MatsimXmlParser:215 Trying to load http://www.matsim.org/files/dtd/network_v1.dtd. In some cases (e.g. network interface up but no connection), this may take a bit.
+2013-05-21 13:57:42,316  INFO ScenarioLoaderImpl:180 loading network change events from ./input/roadClosure.xml
+2013-05-21 13:57:42,329  WARN AbstractController$2:79 Getting uncaught Exception in Thread AWT-EventQueue-0
+org.matsim.core.utils.io.UncheckedIOException: org.xml.sax.SAXParseException: Premature end of file.
 	at org.matsim.core.utils.io.MatsimXmlParser.parse(MatsimXmlParser.java:176)
 	at org.matsim.core.utils.io.MatsimXmlParser.parse(MatsimXmlParser.java:144)
 	at org.matsim.core.network.NetworkChangeEventsParser.parse(NetworkChangeEventsParser.java:120)
@@ -700,7 +697,7 @@ org.matsim.core.utils.io.UncheckedIOException: org.xml.sax.SAXParseException: cv
 	at org.matsim.core.controler.Controler.loadData(Controler.java:383)
 	at org.matsim.core.controler.Controler.run(Controler.java:326)
 	at org.mugsandcoffee.CreateOutput.generateOutput(CreateOutput.java:21)
-	at org.menu_builder.mainMenu$4.actionPerformed(mainMenu.java:110)
+	at org.menu_builder.mainMenu$4.actionPerformed(mainMenu.java:103)
 	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
 	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
 	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
@@ -726,20 +723,12 @@ org.matsim.core.utils.io.UncheckedIOException: org.xml.sax.SAXParseException: cv
 	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
 	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
 	at java.awt.EventDispatchThread.run(Unknown Source)
-Caused by: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: 'null' is not a valid value for 'time'.
+Caused by: org.xml.sax.SAXParseException: Premature end of file.
 	at org.apache.xerces.util.ErrorHandlerWrapper.createSAXParseException(Unknown Source)
-	at org.apache.xerces.util.ErrorHandlerWrapper.error(Unknown Source)
+	at org.apache.xerces.util.ErrorHandlerWrapper.fatalError(Unknown Source)
 	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
 	at org.apache.xerces.impl.XMLErrorReporter.reportError(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator$XSIErrorReporter.reportError(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator.reportSchemaError(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator.processOneAttribute(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator.processAttributes(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator.handleStartElement(Unknown Source)
-	at org.apache.xerces.impl.xs.XMLSchemaValidator.startElement(Unknown Source)
-	at org.apache.xerces.impl.XMLNSDocumentScannerImpl.scanStartElement(Unknown Source)
-	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl$FragmentContentDispatcher.dispatch(Unknown Source)
-	at org.apache.xerces.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at org.apache.xerces.impl.XMLVersionDetector.determineDocVersion(Unknown Source)
 	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
 	at org.apache.xerces.parsers.XML11Configuration.parse(Unknown Source)
 	at org.apache.xerces.parsers.XMLParser.parse(Unknown Source)
@@ -747,33 +736,6 @@ Caused by: org.xml.sax.SAXParseException: cvc-datatype-valid.1.2.1: 'null' is no
 	at org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
 	at org.matsim.core.utils.io.MatsimXmlParser.parse(MatsimXmlParser.java:170)
 	... 35 more
-2013-05-20 20:59:24,265  WARN AbstractController$2:79 Getting uncaught Exception in Thread AWT-EventQueue-0
-java.lang.NumberFormatException: null
-	at java.lang.Integer.parseInt(Unknown Source)
-	at java.lang.Integer.parseInt(Unknown Source)
-	at org.menu_builder.mainMenu$5.actionPerformed(mainMenu.java:123)
-	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
-	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
-	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
-	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
-	at java.awt.Component.processMouseEvent(Unknown Source)
-	at javax.swing.JComponent.processMouseEvent(Unknown Source)
-	at java.awt.Component.processEvent(Unknown Source)
-	at java.awt.Container.processEvent(Unknown Source)
-	at java.awt.Component.dispatchEventImpl(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
-	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
-	at java.awt.Container.dispatchEventImpl(Unknown Source)
-	at java.awt.Window.dispatchEventImpl(Unknown Source)
-	at java.awt.Component.dispatchEvent(Unknown Source)
-	at java.awt.EventQueue.dispatchEvent(Unknown Source)
-	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
-	at java.awt.EventDispatchThread.run(Unknown Source)
+2013-05-21 13:57:46,649  WARN AbstractController$1:57 S H U T D O W N   ---   received unexpected shutdown request.
+2013-05-21 13:57:46,662  INFO ControlerListenerManager:148 all ControlerShutdownListeners called.
+2013-05-21 13:57:46,664  INFO AbstractController:121 Cannot remove shutdown hook. Shutdown in progress

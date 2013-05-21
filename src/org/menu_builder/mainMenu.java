@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -27,13 +28,8 @@ import com.mysql.jdbc.Statement;
 
 public class mainMenu {
 	
-
-	
-	
 	private static LayoutBuilder layout;
-	
 
-	
 	public static void main(String[] args) {
 		layout = new LayoutBuilder( 350, 800, "Mam Bing Menu");
 		
@@ -91,7 +87,20 @@ public class mainMenu {
 		
 		btn4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 
+            	
+            	File file = new File("./output");
+            	boolean isDirectoryCreated = file.mkdir();
+            	   if (isDirectoryCreated) {
+            		   
+            	       System.out.println("successfully made");
+            	   } else {
+            		   
+            	          file.delete();
+            	          file.mkdir();
+            	          
+            	          System.out.println("deleted and made");
+            	   }
+            	
         		/* Create output files */
         		CreateOutput output = new CreateOutput();
         		output.generateOutput(); 
@@ -114,7 +123,7 @@ public class mainMenu {
             	facility = facility + "<networkChangeEvents xmlns=\"http://www.matsim.org/files/dtd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/networkChangeEvents.xsd\">\n";
             	for(int i=0; i<totalCount;i++){
             		
-            		String timeget = JOptionPane.showInputDialog("Enter time");
+            		String timeget = JOptionPane.showInputDialog("Enter time: (HH:MM:SS)");
             		String idget = JOptionPane.showInputDialog("Enter id");
             		
             		facility = facility + "\n\t<networkChangeEvent startTime=\""+ timeget +"\">\n";
@@ -419,4 +428,7 @@ public class mainMenu {
            return "No results";
         }
 	}
+	
+
+	
 }
