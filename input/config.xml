@@ -28,7 +28,7 @@
 	<!-- ====================================================================== -->
 
 	<module name="facilities">
-		<param name="inputFacilitiesFile" value="&INBASE;/facilities.xml" />
+		<param name="inputFacilitiesFile" value="&INBASE;/facilities.xml.gz" />
 	</module>
 	
 	<!-- ====================================================================== -->
