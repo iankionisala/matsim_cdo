@@ -1,0 +1,2 @@
+﻿-- SELECT * FROM eventlog WHERE person=10 AND `time` BETWEEN 5400.0 AND 5451.0; #acttype IN ('origin', 'destination');
+SELECT DISTINCT /*e.link, */SUM(l.length) AS 'Total Length Travelled' FROM eventlog e LEFT JOIN links l ON e.link=l.id  WHERE e.person=10 AND e.`time` BETWEEN 5400.0 AND 5451.0 ORDER BY e.`time` ASC; #acttype IN ('origin', 'destination');
