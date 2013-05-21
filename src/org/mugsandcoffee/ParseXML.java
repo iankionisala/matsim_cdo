@@ -50,7 +50,7 @@ public class ParseXML {
 		prepStmt.execute();
 //		prepStmt.ex
 		// closes the db connection
-		this.Conn.close();
+//		this.Conn.close();
 		
 		} catch(SQLException e) {
 			System.out.println("insertEvent: " + e.getMessage());
@@ -59,7 +59,25 @@ public class ParseXML {
 		
 	}
 	
+	public void clearEventLog() {
+		
+		try {
+			PreparedStatement prepStmt = null;
+			
+			prepStmt = this.Conn.prepareStatement("DELETE FROM eventlog;");
+			prepStmt.execute();
+			
+		} catch(SQLException e) {
+			System.out.println("clearEventLog: " +  e.getMessage());
+		}
+	}
+	
 	public void closeConnection() {
+		try {
+			this.Conn.close();
+		} catch (SQLException e) {
+			System.out.println("closeConnection: " +  e.getMessage());
+		}
 		
 	}
 
