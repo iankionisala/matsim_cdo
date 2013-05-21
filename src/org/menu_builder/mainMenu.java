@@ -221,7 +221,7 @@ public class mainMenu {
 				
 				population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
         				population = population + "\t\t\t<plan selected=\"yes\">\n";
 													        				String parsed_text = selectEvent();
 													        				String[] result;
@@ -277,7 +277,7 @@ public class mainMenu {
 					System.out.println("2 13-17:" +hms2);
 					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-	        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+	        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
 	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
 														        				String parsed_text = selectEvent();
 														        				String[] result;
@@ -331,7 +331,7 @@ public class mainMenu {
 					System.out.println("2  17-24:" +hms2);
 					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-	        		population = population + "\t\t<person id=\""+ (45+i+1) +"\" employed=\"yes\">\n";
+	        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
 	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
 														        				String parsed_text = selectEvent();
 														        				String[] result;
