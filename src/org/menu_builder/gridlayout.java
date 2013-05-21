@@ -29,27 +29,38 @@ public class gridlayout {
                 "Time-Elapsed",
                 "Direction"
                 };
+		
 		String data_unpreped = search_street();
-		String[] each_data = data_unpreped.split("|");
+		String[] each_data = data_unpreped.split("_");
 		System.out.println(each_data);
+		
 		int n = each_data.length;
+		
 		System.out.println(n);
 		String[][] data = new String[n][7];
+		
 		for(int i=0; i<each_data.length; i++){
-			String[] parsed_clm = each_data[i].split("\\-");
-			 System.out.println("column:"+parsed_clm[0]);
 			
-//			data[i][0] = parsed_clm[0];
-//			data[i][1] = parsed_clm[1];
-//			data[i][2] = parsed_clm[2];
-//			data[i][3] = parsed_clm[3];
-//			data[i][4] = parsed_clm[4];
-//			data[i][5] = parsed_clm[5];
-//			data[i][6] = parsed_clm[6];
+			String[] parsed_clm = each_data[i].split("-");
+			
+			data[i][0] = parsed_clm[0];
+			data[i][1] = parsed_clm[1];
+			data[i][2] = parsed_clm[2];
+			data[i][3] = parsed_clm[3];
+			data[i][4] = parsed_clm[4];
+			data[i][5] = parsed_clm[5];
+			data[i][6] = parsed_clm[6];
+			
+			if(i==each_data.length){
+				layout.frame.getContentPane().repaint();
+			}
 		}
 		
-		JTable tb1 = layout.buildJtable(data, columnNames, 300, 400, 0, 0);
+		JTable tb1 = layout.buildJtable(data, columnNames, 500, 600, 0, 0);
+		new JScrollPane(tb1, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		tb1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		layout.addbuilder(tb1);
+		
 	}
 	
 	public static void main(String[] args) {
@@ -88,7 +99,7 @@ public class gridlayout {
             
             int i=0;
             while(rs.next()){
-            	data = rs.getString("name")+ "-" + rs.getString("links") + "-" + rs.getString("distance") + "-" + rs.getString("timefrom") + "-" + rs.getString("timeto") + "-" + rs.getString("timeelapsed") + "-" + rs.getString("direction") + "|";
+            	data = data + rs.getString("name")+ "-" + rs.getString("links") + "-" + rs.getString("distance") + "-" + rs.getString("timefrom") + "-" + rs.getString("timeto") + "-" + rs.getString("timeelapsed") + "-" + rs.getString("direction") + "_";
             	i++;
             }
             data = data.substring(0, data.length()-1);

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE facilities SYSTEM "http://www.matsim.org/files/dtd/facilities_v1.dtd">
+<facilities>
+
+<!-- ====================================================================== -->
+
+	<facility id="0" x="2369292.812" y="890012.7092">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="1" x="2369292.812" y="890012.7092">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="10" x="2370855.899" y="889762.9693">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="11" x="2370167.283" y="890888.3188">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="12" x="2369952.441" y="890990.9387">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="13" x="2369695.201" y="890534.6895">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="14" x="2369354.798" y="889766.0739">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="15" x="2368530.963" y="889846.1415">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="16" x="2367655.039" y="890362.4457">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="17" x="2368029.306" y="891785.1401">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="18" x="2369843.962" y="890973.0695">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="19" x="2368575.089" y="885885.5658">
+		<activity type="evacuation">
+			<opentime day="wkday" start_time="08:00:00" end_time="19:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="2" x="2370387.307" y="889944.5161">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="20" x="2370372.562" y="890206.7816">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="21" x="2369946.206" y="887431.3438">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="22" x="2371113.49" y="893177.5669">
+		<activity type=" Fire Station">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="3" x="2371042.874" y="891329.1505">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="4" x="2368640.979" y="890271.5688">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="5" x="2371283.38" y="892507.4123">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="6" x="2369755.794" y="888529.7971">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="7" x="2367979.043" y="889937.4581">
+		<activity type="police ">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="8" x="2367967.057" y="889942.4515">
+		<activity type="police">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+	<facility id="9" x="2372938.905" y="890299.9451">
+		<activity type="hospital">
+			<opentime day="wk" start_time="00:00:00" end_time="24:00:00" />
+		</activity>
+
+	</facility>
+
+<!-- ====================================================================== -->
+
+</facilities>

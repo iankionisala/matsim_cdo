@@ -14,7 +14,7 @@ import javax.swing.table.TableModel;
 
 public class LayoutBuilder {
 	
-	private JFrame frame;
+	public JFrame frame;
 	private Container container;
 	private Dimension screenSize;
 	public int _mheight;		
@@ -90,7 +90,8 @@ public class LayoutBuilder {
 	}
 	
 	public void addbuilder(Component comp){
-		 
+		
 		 container.add(comp);
+		 container.repaint();
 	}
 }

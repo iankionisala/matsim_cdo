@@ -1,30 +1,14 @@
 <!-- =============================== random0 ======================================= -->
 
-		<person id="46" employed="yes">
+		<person id="45" employed="yes">
 			<plan selected="yes">
-				<act type="origin" facility="0" x="2367031.42932428" y="886834.858591457"  end_time="09:25:00" />
-					<leg mode="car" dep_time="09:25:00">
+				<act type="origin"  x="2366472.03229595" y="892477.741452711"  end_time="15:05:00" />
+					<leg mode="car" dep_time="15:05:00">
 					</leg>
-				<act type="destination" facility="19" x="2367733.35715832" y="886067.262407843" end_time="09:40:00" />
-					<leg mode="car" dep_time="09:40:00">
+				<act type="destination"  x="2368607.48117149" y="886136.40118294" end_time="16:44:00" />
+					<leg mode="car" dep_time="16:44:00">
 					</leg>
-				<act type="origin" facility="0" x="2367031.42932428" y="886834.858591457" />
-			</plan>
-		</person>
-
-
-
-<!-- =============================== random1 ======================================= -->
-
-		<person id="47" employed="yes">
-			<plan selected="yes">
-				<act type="origin" facility="0" x="2370014.79862672" y="886318.095852529"  end_time="08:30:00" />
-					<leg mode="car" dep_time="08:30:00">
-					</leg>
-				<act type="destination" facility="19" x="2371620.45205654" y="889890.714934166" end_time="08:34:00" />
-					<leg mode="car" dep_time="08:34:00">
-					</leg>
-				<act type="origin" facility="0" x="2370014.79862672" y="886318.095852529" />
+				<act type="origin"  x="2366472.03229595" y="892477.741452711" />
 			</plan>
 		</person>
 
