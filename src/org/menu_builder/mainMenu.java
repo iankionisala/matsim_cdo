@@ -232,7 +232,7 @@ public class mainMenu {
 												        					String parsed_text2 = selectEvent();
 													        				String[] result2;
 													        				result2 = parsed_text2.split(",");
-        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result2[0] +"\" y=\""+ result2[1] +"\" end_time=\""+ hms2 +"\" />\n";
         					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
         					population = population + "\t\t\t\t\t</leg>\n";
         					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
@@ -288,7 +288,7 @@ public class mainMenu {
 													        					String parsed_text2 = selectEvent();
 														        				String[] result2;
 														        				result2 = parsed_text2.split(",");
-	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result2[0] +"\" y=\""+ result2[1] +"\" end_time=\""+ hms2 +"\" />\n";
 	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
 	        					population = population + "\t\t\t\t\t</leg>\n";
 	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
@@ -342,7 +342,7 @@ public class mainMenu {
 													        					String parsed_text2 = selectEvent();
 														        				String[] result2;
 														        				result2 = parsed_text2.split(",");
-	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" end_time=\""+ hms2 +"\" />\n";
+	        					population = population + "\t\t\t\t<act type=\"destination\" facility=\"19\" x=\""+ result2[0] +"\" y=\""+ result2[1] +"\" end_time=\""+ hms2 +"\" />\n";
 	        					population = population + "\t\t\t\t\t<leg mode=\"car\" dep_time=\""+ hms2 +"\">\n";
 	        					population = population + "\t\t\t\t\t</leg>\n";
 	        					population = population + "\t\t\t\t<act type=\"origin\" facility=\"0\" x=\""+ result[0] +"\" y=\""+ result[1] +"\" />\n";
