@@ -37,7 +37,7 @@ public class file_handler {
 	
 	private boolean is_writable(){
 		read_dir();
-		file = new File("" + _mcur_dir + "input/" + ""); 
+		file = new File("./input/" + ""); 
 		
 		if (file.canWrite() )
 			return true;
