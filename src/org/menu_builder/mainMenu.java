@@ -27,23 +27,10 @@ import com.mysql.jdbc.Statement;
 
 public class mainMenu {
 	
-	private static String mServer;
-	private static String mDatabase;
-	private static String mUser;
-	private static String mPword;
-	private static Connection Conn;
+
 	
 	
 	private static LayoutBuilder layout;
-	
-	public mainMenu() {
-		// loads the default connetion details
-		mServer = "jdbc:mysql://localhost:3306/";
-		mDatabase = "matsim";
-		mUser = "root";
-		mPword = "";
-		
-	}
 	
 
 	
@@ -165,7 +152,18 @@ public class mainMenu {
 		
 		btn7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-            	 JOptionPane.showMessageDialog(null, "tongbens gwapo");
+            	String street_name = JOptionPane.showInputDialog("Search name of St.");
+            	String street = search_street(street_name);
+            	Font font = new Font("Arial", Font.BOLD, 13);
+            	JTextArea textArea = new JTextArea();
+            	textArea.setFont(font);
+            	textArea.setText(" Link Id's : \n\n" +street);
+            	textArea.setSize(300, Short.MAX_VALUE); // limit = width in pixels, e.g. 500
+            	textArea.setWrapStyleWord(true);
+            	textArea.setRows(10);
+            	textArea.setLineWrap(true);
+            	
+            	JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
             }
         });
 		
@@ -388,5 +386,37 @@ public class mainMenu {
 		return "";
 	}
 	
-	
+	public static String search_street(String st_name) {
+		String dbURL = "jdbc:mysql://localhost:3306/matsim";
+        String username ="root";
+       
+        Connection dbCon = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+       
+        String query ="SELECT li.`id` as link_id, si.`street_name` as name  FROM `street_info` si LEFT JOIN  links li ON li.origid=si.`link_id` WHERE si.`street_name`=\""+ st_name +"\" ";
+       
+        try {
+            //getting database connection to MySQL server
+            dbCon = DriverManager.getConnection(dbURL, username, "");
+           
+            //getting PreparedStatment to execute query
+            stmt = dbCon.prepareStatement(query);
+           
+            //Resultset returned by query
+            rs = stmt.executeQuery(query);
+            String link_id = null;
+            String results = "               ";
+            while(rs.next()){
+            	link_id = rs.getString("link_id");
+            	results = results + link_id + "  ,  ";
+            }
+
+            results = results.substring(0, results.length() - 1);
+            return results;
+           
+        } catch (SQLException ex) {
+           return "No results";
+        }
+	}
 }
