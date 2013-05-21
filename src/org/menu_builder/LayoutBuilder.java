@@ -8,10 +8,9 @@ import java.awt.Font;
 import java.awt.TextField;
 import java.awt.Toolkit;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 
 public class LayoutBuilder {
 	
@@ -64,6 +63,14 @@ public class LayoutBuilder {
 		JLbl.setLocation( Jlbl_height - Jlbl_height + xlocation , ylocation );
 		return JLbl;
 		
+	}
+	
+	public JTable buildJtable(Object[][] data, String[] data1, int height, int width, int xlocation, int ylocation){
+		
+		JTable gridtable = new JTable(data, data1 );
+		gridtable.setSize( height ,width);
+		gridtable.setLocation( xlocation , ylocation);
+		return gridtable;
 	}
 	
 	public JButton buildJButton( String title, int height, int width , int xlocation, int ylocation){

@@ -31,7 +31,7 @@ public class mainMenu {
 	private static LayoutBuilder layout;
 
 	public static void main(String[] args) {
-		layout = new LayoutBuilder( 350, 800, "Mam Bing Menu");
+		layout = new LayoutBuilder( 270, 800, "Mam Bing Menu");
 		
 		Font font = new Font("Arial", Font.BOLD, 17);
 		Color color= null;
@@ -40,7 +40,7 @@ public class mainMenu {
 		JLabel lbl = layout.buildJLabel("Matsim Project", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
 		layout.addbuilder(lbl);
 		
-		JButton btn = layout.buildJButton("Create Network", 150, 50, 40, 50);
+		JButton btn = layout.buildJButton("Create Network", 160, 30, 40, 50);
 		layout.addbuilder(btn);
 		
 		btn.addActionListener(new ActionListener() {
@@ -56,7 +56,7 @@ public class mainMenu {
         });
 		
 		//buttons
-		JButton btn2 = layout.buildJButton("Create Facilities", 150, 50, 210, 50);
+		JButton btn2 = layout.buildJButton("Create Facilities", 160, 30, 210, 50);
 		layout.addbuilder(btn2);
 		
 		btn2.addActionListener(new ActionListener() {
@@ -71,7 +71,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn3 = layout.buildJButton("Create Population", 150, 50, 40,  115);
+		JButton btn3 = layout.buildJButton("Create Population", 160, 30, 40,  90);
 		layout.addbuilder(btn3);
 		
 		btn3.addActionListener(new ActionListener() {
@@ -82,7 +82,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn4 = layout.buildJButton("Create Output", 150, 50, 210, 115);
+		JButton btn4 = layout.buildJButton("Create Output", 160, 30, 210, 90);
 		layout.addbuilder(btn4);
 		
 		btn4.addActionListener(new ActionListener() {
@@ -110,7 +110,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn5 = layout.buildJButton("Add road closure", 150, 50, 40, 180);
+		JButton btn5 = layout.buildJButton("Add road closure", 160, 30, 40, 130);
 		layout.addbuilder(btn5);
 		
 		btn5.addActionListener(new ActionListener() {
@@ -140,7 +140,7 @@ public class mainMenu {
         });
 		
 		//buttons
-		JButton btn6 = layout.buildJButton("Add Vehicle", 150, 50, 210, 180);
+		JButton btn6 = layout.buildJButton("Add Vehicle", 160, 30, 210, 130);
 		layout.addbuilder(btn6);
 		
 		btn6.addActionListener(new ActionListener() {
@@ -153,10 +153,10 @@ public class mainMenu {
             }
         });
 		
-		JButton btn7 = layout.buildJButton("Search", 150, 50, 40, 245);
+		JButton btn7 = layout.buildJButton("Search", 160, 30, 40, 170);
 		layout.addbuilder(btn7);
 		
-		JButton btn8 = layout.buildJButton("Event Log Reports", 150, 50, 210, 245);
+		JButton btn8 = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
 		layout.addbuilder(btn8);
 		
 		btn7.addActionListener(new ActionListener() {
