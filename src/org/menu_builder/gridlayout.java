@@ -4,6 +4,8 @@ import java.awt.Color;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
+
+import org.matsim.matrices.Matrices;
 import org.menu_builder.*;
 
 import java.awt.*;
@@ -16,6 +18,7 @@ import java.sql.SQLException;
 public class gridlayout {
 
 	public static void generate_table(){
+		
 		LayoutBuilder layout = new LayoutBuilder(500, 600, "Routes");
 		String[] columnNames = {
 				"Name",
@@ -26,21 +29,25 @@ public class gridlayout {
                 "Time-Elapsed",
                 "Direction"
                 };
-		Object[][] data = {
-			    {"Kathy", "Smith",
-			     "Snowboarding", new Integer(5), new Boolean(false)},
-			    {"John", "Doe",
-			     "Rowing", new Integer(3), new Boolean(true)},
-			    {"Sue", "Black",
-			     "Knitting", new Integer(2), new Boolean(false)},
-			    {"Jane", "White",
-			     "Speed reading", new Integer(20), new Boolean(true)},
-			    {"Joe", "Brown",
-			     "Pool", new Integer(10), new Boolean(false)}
-			};
-		System.out.println("printing data");
-		search_street();
-		System.out.println("data printed");
+		String data_unpreped = search_street();
+		String[] each_data = data_unpreped.split("|");
+		System.out.println(each_data);
+		int n = each_data.length;
+		System.out.println(n);
+		String[][] data = new String[n][7];
+		for(int i=0; i<each_data.length; i++){
+			String[] parsed_clm = each_data[i].split("\\-");
+			 System.out.println("column:"+parsed_clm[0]);
+			
+//			data[i][0] = parsed_clm[0];
+//			data[i][1] = parsed_clm[1];
+//			data[i][2] = parsed_clm[2];
+//			data[i][3] = parsed_clm[3];
+//			data[i][4] = parsed_clm[4];
+//			data[i][5] = parsed_clm[5];
+//			data[i][6] = parsed_clm[6];
+		}
+		
 		JTable tb1 = layout.buildJtable(data, columnNames, 300, 400, 0, 0);
 		layout.addbuilder(tb1);
 	}
@@ -50,7 +57,7 @@ public class gridlayout {
 		generate_table();
 	}
 	
-	public static Object[][] search_street() {
+	public static String search_street() {
 		String dbURL = "jdbc:mysql://localhost:3306/matsim";
         String username ="root";
        
@@ -76,27 +83,22 @@ public class gridlayout {
             
             //Resultset returned by query
             rs = stmt2.executeQuery(query2);
-            Object[][] data = null;
+            
+            String data = "";
+            
             int i=0;
             while(rs.next()){
-            	System.out.println(rs.getString("links"));
-//            	data[i][1] = rs.getString("name");
-//            	data[i][2] = rs.getString("links");
-//            	data[i][3] = rs.getString("distance");
-//            	data[i][4] = rs.getString("timefrom");
-//            	data[i][5] = rs.getString("timeto");
-//            	data[i][6] = rs.getString("timeelapsed");
-//            	data[i][7] = rs.getString("direction");
-//            	data[i][8] = rs.getString("link_id");
+            	data = rs.getString("name")+ "-" + rs.getString("links") + "-" + rs.getString("distance") + "-" + rs.getString("timefrom") + "-" + rs.getString("timeto") + "-" + rs.getString("timeelapsed") + "-" + rs.getString("direction") + "|";
             	i++;
             }
-            System.out.println(data);
+            data = data.substring(0, data.length()-1);
             return data;
            
         } catch (SQLException ex) {
-        	
+        	System.out.println("catches exception: " + ex);
+        	return "";
         }
-		return null;
+		
        
 	}
 	
