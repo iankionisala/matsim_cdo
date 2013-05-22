@@ -72,7 +72,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn3 = layout.buildJButton("Create Population", 160, 30, 40,  90);
+		JButton btn3 = layout.buildJButton("Create DRVs", 160, 30, 40,  90);
 		layout.addbuilder(btn3);
 		
 		btn3.addActionListener(new ActionListener() {
