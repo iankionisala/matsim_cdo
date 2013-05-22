@@ -1,0 +1,61 @@
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_retrieve_links` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_retrieve_links`()
+BEGIN
+    DECLARE record_not_found INT DEFAULT 0;
+    DECLARE l_agent INT(11);
+    DECLARE l_timefrom DECIMAL(8,1);
+    DECLARE l_timeto DECIMAL(8,1);
+    DECLARE l_links MEDIUMTEXT DEFAULT NULL;
+    DECLARE l_distance DECIMAL(15,12) DEFAULT 0.0;
+    DECLARE l_timeelapsed DECIMAL(8,1) DEFAULT 0.0;
+    DECLARE l_direction VARCHAR(75) DEFAULT NULL;
+
+    DECLARE curRoute CURSOR FOR SELECT agent, links, distance, timefrom, timeto, timeelapsed, direction FROM route;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET record_not_found = 1;
+    DECLARE EXIT HANDLER FOR SQLWARNING ROLLBACK;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION ROLLBACK;
+
+    START TRANSACTION;
+
+      /* creates temporary table for route */
+      DROP TEMPORARY TABLE IF EXISTS `tmproute`;
+      CREATE TEMPORARY TABLE `tmproute`(
+        agent INT(11) DEFAULT -1,
+        links MEDIUMTEXT DEFAULT "",
+        distance DECIMAL(18, 12) DEFAULT 0.0,
+        timefrom DECIMAL(8,1) DEFAULT 0.0,
+        timeto DECIMAL(8,1) DEFAULT 0.0,
+        timeelapsed DECIMAL(8,1) DEFAULT 0.0,
+        direction VARCHAR(75) DEFAULT NULL) ENGINE=MyISAM;
+
+      /* traverse each record of route */
+      OPEN curRoute;
+
+      route_loop:LOOP
+
+          FETCH curRoute INTO l_agent, l_links, l_distance, l_timefrom, l_timeto, l_timeelapsed, l_direction;
+
+          IF record_not_found = 1 THEN
+            LEAVE route_loop;
+          END IF;
+
+          /* inserts into temporary table */
+          INSERT INTO tmproute SET agent = l_agent,
+                                   distance = func_get_travelled_length(l_agent, l_timefrom, l_timeto),
+                                   timefrom = l_timefrom,
+                                   timeto = l_timeto,
+                                   timeelapsed = l_timeelapsed,
+                                   direction = l_direction,
+                                   links = func_get_travelled_links(l_agent, l_timefrom, l_timeto);
+
+      END LOOP route_loop;
+
+      CLOSE curRoute;
+
+    COMMIT;
+
+  END $$
+
+DELIMITER ;
