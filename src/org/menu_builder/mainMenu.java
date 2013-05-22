@@ -200,8 +200,6 @@ public class mainMenu {
 		btnEventLogReports.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
-				//System.out.println("Call the event log button");
 				mncTable tb = new mncTable();
 				
 				try {
@@ -216,6 +214,63 @@ public class mainMenu {
 				}
 			}
 		});
+		
+		JButton btnAgentMasterFile = layout.buildJButton("Agent Master File",  160, 30, 380, 90);
+		layout.addbuilder(btnAgentMasterFile);
+		
+		btnAgentMasterFile.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = "SELECT * FROM person p";
+					String[] tblHeader = {"Agent ID", "Agent Name"};
+					tb.showTable(strQry, tblHeader, "Agent Master File");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+		
+		JButton btnStreetName = layout.buildJButton("Street Names",  160, 30, 380, 130);
+		layout.addbuilder(btnStreetName);
+		
+		btnStreetName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = "SELECT * FROM links_street l WHERE link_id IS NOT NULL";
+					String[] tblHeader = {"Link ID", "Street Name"};
+					tb.showTable(strQry, tblHeader, "Street Names");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}				
+			}
+		});
+	
+		JButton btnLinksAttrib = layout.buildJButton("Links Attributes",  160, 30, 380, 170);
+		layout.addbuilder(btnLinksAttrib);
+		
+		btnLinksAttrib.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = " SELECT id, `from`, `to`, length, freespeed, capacity, permlanes, oneway, modes, origid FROM links l";
+					String[] tblHeader = {"Link ID", "From", "To", "Length", "Freespeed", "Capacity", "PermLanes", "Oneway", "Modes", "OrigID"};
+					tb.showTable(strQry, tblHeader, "Links Attributes");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}				
+			}
+		});
+		
 		
 	}
 	
