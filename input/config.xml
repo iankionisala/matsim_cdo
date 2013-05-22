@@ -19,10 +19,10 @@
 
 	<module name="network">
 	    <param name="inputNetworkFile" value="&INBASE;/network.xml" />
-	     <param name="timeVariantNetwork" value="true" />
+	    <param name="timeVariantNetwork" value="true" />
 	    <param name="inputChangeEventsFile" value="&INBASE;/roadClosure.xml" />
 	
-		
+	
 
 	</module>
 	

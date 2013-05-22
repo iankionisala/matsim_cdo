@@ -30,6 +30,9 @@ public final class GenerateEventLog {
 		// read text file here
 		eventNodes = strmdEvents.getAllObjects();
 		
+		// clears the eventlog table
+		pxml.clearEventLog();
+		
 		// loops each line 
 		for(int i = 0; i < eventNodes.getLength(); i++) {
 			Node nNode = eventNodes.item(i);
@@ -49,6 +52,7 @@ public final class GenerateEventLog {
 			}
 		}
 		
+		pxml.closeConnection();
 		System.out.print("Succeded");
 
 	}
