@@ -23,6 +23,7 @@ import org.mugsandcoffee.CreateOutput;
 import org.mugsandcoffee.CreatePopulation;
 import xml_parser.file_handler;
 import com.mysql.jdbc.Statement;
+import org.mugsandcoffee.GenerateEventLog;
 import org.mugsandcoffee.datasource.*;
 
 public class mainMenu {
@@ -230,20 +231,38 @@ public class mainMenu {
             }
         });
 		
-		JButton btnEventLogReports = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
+		JButton btnGenerateEventLog = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
+		layout.addbuilder(btnGenerateEventLog);
+		
+		btnGenerateEventLog.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				GenerateEventLog genEventLog = new GenerateEventLog();
+				
+				try {
+					genEventLog.generateLog();
+					
+					JOptionPane.showMessageDialog(layout.getFrame(), "Processing Done....");
+					
+				} catch(Exception e) {
+					System.out.println("btnGenerateEventLog: " + e.getMessage());
+				}
+				
+			}
+		});
+		
+		JButton btnEventLogReports = layout.buildJButton("Analysis Report",  160, 30, 380, 50);
 		layout.addbuilder(btnEventLogReports);
 		
 		btnEventLogReports.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
-				//System.out.println("Call the event log button");
 				mncTable tb = new mncTable();
 				
 				try {
-//					String strQry = "SELECT p.name, r.links, r.distance, r.timefrom, r.timeto, r.timeelapsed, r.direction FROM route r LEFT JOIN person p ON r.agent=p.idw";
-					String strQry = "SELECT l.id, l.origid, s.street_name FROM street_info s LEFT JOIN links l ON s.link_id=l.origid WHERE l.id IS NOT NULL";
-					String[] tblHeader = {"Matsim ID", "OpenStreet Map ID", "Street Name"};//{"Agent Name", "Links", "Distance", "From", "To", "Elapse Time", "Direcion"};
+					String strQry = "SELECT p.name, r.links, r.distance, r.timefrom, r.timeto, r.timeelapsed, r.direction FROM route r LEFT JOIN person p ON r.agent=p.idw";
+//					String strQry = "SELECT l.id, l.origid, s.street_name FROM street_info s LEFT JOIN links l ON s.link_id=l.origid WHERE l.id IS NOT NULL";
+					String[] tblHeader = {"Agent Name", "Links", "Distance", "From", "To", "Elapse Time", "Direcion"}; // {"Matsim ID", "OpenStreet Map ID", "Street Name"};//
 					tb.showTable(strQry, tblHeader, "Street Information");
 					
 				} catch (Exception e1) {
@@ -252,6 +271,63 @@ public class mainMenu {
 				}
 			}
 		});
+		
+		JButton btnAgentMasterFile = layout.buildJButton("Agent Master File",  160, 30, 380, 90);
+		layout.addbuilder(btnAgentMasterFile);
+		
+		btnAgentMasterFile.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = "SELECT * FROM person p";
+					String[] tblHeader = {"Agent ID", "Agent Name"};
+					tb.showTable(strQry, tblHeader, "Agent Master File");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+		
+		JButton btnStreetName = layout.buildJButton("Street Names",  160, 30, 380, 130);
+		layout.addbuilder(btnStreetName);
+		
+		btnStreetName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = "SELECT * FROM links_street l WHERE link_id IS NOT NULL";
+					String[] tblHeader = {"Link ID", "Street Name"};
+					tb.showTable(strQry, tblHeader, "Street Names");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}				
+			}
+		});
+	
+		JButton btnLinksAttrib = layout.buildJButton("Links Attributes",  160, 30, 380, 170);
+		layout.addbuilder(btnLinksAttrib);
+		
+		btnLinksAttrib.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				mncTable tb = new mncTable();
+				
+				try {
+					String strQry = " SELECT id, `from`, `to`, length, freespeed, capacity, permlanes, oneway, modes, origid FROM links l";
+					String[] tblHeader = {"Link ID", "From", "To", "Length", "Freespeed", "Capacity", "PermLanes", "Oneway", "Modes", "OrigID"};
+					tb.showTable(strQry, tblHeader, "Links Attributes");
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}				
+			}
+		});
+		
 		
 	}
 	

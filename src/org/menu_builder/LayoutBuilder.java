@@ -95,8 +95,13 @@ public class LayoutBuilder {
 		 container.repaint();
 	}
 
+
 	public void close_panel() {
 		frame.dispose();
-		
+	}
+	
+	public JFrame getFrame() {
+		return (JFrame)this.frame;
+
 	}
 }
