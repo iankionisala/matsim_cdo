@@ -17,7 +17,8 @@ public final class GenerateEventLog {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+	public void generateLog() {
 		NodeList eventNodes;
 		
 		// instantiates some classes

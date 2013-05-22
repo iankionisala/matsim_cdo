@@ -94,4 +94,8 @@ public class LayoutBuilder {
 		 container.add(comp);
 		 container.repaint();
 	}
+	
+	public JFrame getFrame() {
+		return (JFrame)this.frame;
+	}
 }
