@@ -21,11 +21,9 @@ import org.mugsandcoffee.CreateFacilities;
 import org.mugsandcoffee.CreateNetwork;
 import org.mugsandcoffee.CreateOutput;
 import org.mugsandcoffee.CreatePopulation;
-
 import xml_parser.file_handler;
-
 import com.mysql.jdbc.Statement;
-
+import org.mugsandcoffee.datasource.*;
 
 public class mainMenu {
 	
@@ -213,8 +211,7 @@ public class mainMenu {
 		JButton btn7 = layout.buildJButton("Search", 160, 30, 40, 170);
 		layout.addbuilder(btn7);
 		
-		JButton btn8 = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
-		layout.addbuilder(btn8);
+		
 		
 		btn7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -232,6 +229,29 @@ public class mainMenu {
             	JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
             }
         });
+		
+		JButton btnEventLogReports = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
+		layout.addbuilder(btnEventLogReports);
+		
+		btnEventLogReports.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+//				JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
+				//System.out.println("Call the event log button");
+				mncTable tb = new mncTable();
+				
+				try {
+//					String strQry = "SELECT p.name, r.links, r.distance, r.timefrom, r.timeto, r.timeelapsed, r.direction FROM route r LEFT JOIN person p ON r.agent=p.idw";
+					String strQry = "SELECT l.id, l.origid, s.street_name FROM street_info s LEFT JOIN links l ON s.link_id=l.origid WHERE l.id IS NOT NULL";
+					String[] tblHeader = {"Matsim ID", "OpenStreet Map ID", "Street Name"};//{"Agent Name", "Links", "Distance", "From", "To", "Elapse Time", "Direcion"};
+					tb.showTable(strQry, tblHeader, "Street Information");
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 	}
 	

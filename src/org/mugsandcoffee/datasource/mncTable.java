@@ -1,11 +1,7 @@
 package org.mugsandcoffee.datasource;
 
 import javax.swing.*;
-import javax.swing.table.TableColumn;
 import javax.swing.JScrollPane;
-
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,6 +9,15 @@ import java.sql.Connection;
 import java.sql.ResultSetMetaData;
 import org.mugsandcoffee.ParseXML;
 
+/**
+ * 
+ * Generates basic dynamic datagrid table
+ * @author Mugs and Coffee
+ * @coder Kenneth "digiArtist_ph" P. Vallejos
+ * @since Wednesday, May 22, 2013
+ * @version 1.1
+ *
+ */
 public class mncTable {
 
 	private ParseXML Conn;
@@ -24,15 +29,15 @@ public class mncTable {
 		this.ojbConn = Conn.connectToDB();
 	}
 	
-	public JTable buildGrid()throws SQLException {
+	public JTable buildGrid(String Qry, String[] colHeader)throws SQLException {
 		
-		String strQry = "SELECT p.name, r.links, r.distance, r.timefrom, r.timeto, r.timeelapsed, r.direction FROM route r LEFT JOIN person p ON r.agent=p.idw";
+		String strQry = Qry;
 		Statement rstQry = this.ojbConn.createStatement();
 		ResultSet rstRecord = rstQry.executeQuery(strQry);
 		ResultSetMetaData rsMeta = rstRecord.getMetaData();
 		
 		// defines the column names
-		String[] tblHeader = {"Agent Name", "Links", "Distance", "From", "To", "Elapse Time", "Direcion"};
+		String[] tblHeader = colHeader;
 		
 		// defines column count
 		int colCount = rsMeta.getColumnCount();
@@ -43,7 +48,7 @@ public class mncTable {
 		
 		// loops thru the resultset
 		while(rstRecord.next()) {
-			for(int i = 0; i < 7; i++) {
+			for(int i = 0; i < colCount; i++) {
 				allRow[cntr][i] = rstRecord.getString(i + 1);
 			}
 			cntr ++;
@@ -57,6 +62,13 @@ public class mncTable {
 		return tblGrid;
 	}
 	
+	/**
+	 * 
+	 * Returns the count of records
+	 * @param rst ResultSet
+	 * @return number or records in the recordset/resultset
+	 * @throws SQLException
+	 */
 	protected int getRowCount(ResultSet rst) throws SQLException {
 		int cntr = 0;
 		
@@ -70,13 +82,23 @@ public class mncTable {
 		return cntr;
 	}
 	
-	public void showTable() throws Exception {
+	/**
+	 * 
+	 * Shows the actual Datagrid table
+	 * @param Qry SQL statement
+	 * @param colHeader Array of string for the column header's name
+	 * @param TableTitle Title of the table
+	 * @throws Exception
+	 */
+	public void showTable(String strQry, String[] columnHeader, String TableTitle) throws Exception {
 		JFrame frame = new JFrame();
 		mncTable tb = new mncTable();
-		JScrollPane jScroll = new JScrollPane(tb.buildGrid());
-		frame.setTitle("Route Analysis Report");
+		JScrollPane jScroll = new JScrollPane(tb.buildGrid(strQry, columnHeader));
+		
+		frame.setTitle(TableTitle);
 		frame.add(jScroll);
 		frame.setBounds(200, 200, 800, 600);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setVisible(true);
 	}
 }

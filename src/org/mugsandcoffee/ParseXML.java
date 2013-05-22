@@ -29,18 +29,20 @@ public class ParseXML {
 		
 	}
 	
-	public void connectToDB() {
+	public Connection connectToDB() {
 		
 		try {
 			// connects to the selected database
-			this.Conn = DriverManager.getConnection(this.mServer + this.mDatabase, this.mUser, this.mPword);
+			this.Conn = DriverManager.getConnection(this.mServer + this.mDatabase, this.mUser, this.mPword);			
+			
 		} catch(SQLException e) {
 			System.out.print("Error Message: " + e.getMessage());
 		}
 		
+		return (Connection)this.Conn;
+		
 	}
 	public void insertEvent(float mTime, String mType, int mPerson, int mVehicle, int mFacility, int mLink, String mActtype, String mLegmode) {
-//	public void insertEvent(String mTime, String mType, String mPerson, String mVehicle, String mFacility, String mLink, String mLegmode) {
 		
 		try {
 			PreparedStatement prepStmt = null;
