@@ -94,4 +94,9 @@ public class LayoutBuilder {
 		 container.add(comp);
 		 container.repaint();
 	}
+
+	public void close_panel() {
+		frame.dispose();
+		
+	}
 }

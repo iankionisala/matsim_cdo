@@ -35,16 +35,6 @@ public class file_handler {
 		_mcur_dir = fpath_var;
 	}
 	
-	private boolean is_writable(){
-		read_dir();
-		file = new File("./input/" + ""); 
-		
-		if (file.canWrite() )
-			return true;
-		else
-			return false;
-		
-	}
 	
 	private boolean is_readable(){
 		read_dir();
@@ -67,32 +57,25 @@ public class file_handler {
 	}
 	
 	public void create_file(String datatofile){
-		
-		if ( is_writable() ){
 
 			String text = datatofile;
 	        try {
-	          file = new File(_mcur_dir + "input/" + _mfile_name);
+	          file = new File(_mfile_name);
+	         
 	          BufferedWriter output = new BufferedWriter(new FileWriter(file));
 	          output.write(text);
+	          System.out.println(_mfile_name+" writed");
 	          output.close();
 	        } catch ( IOException e ) {
-	           e.printStackTrace();
+	        	System.out.println(e);
 	        }
-	        
-		}else{
-			System.out.println("filename: " + _mfile_name + " is not writable " + _mcur_dir + "input/"); 
-		}
+
 	}
 	
 
 	public String parse_data(){
-		if ( is_readable() ){
 			return read_file();
-		}else{
-			System.out.println("The filename: " + _mfile_name + " is not readable " + _mcur_dir + "input/" + _mfile_name);
-			return null;
-		}
+
 		
 	}
 	
@@ -119,7 +102,7 @@ public class file_handler {
 	    char[] buffer = new char[N];
 
 	    try {
-	        FileReader fr = new FileReader(_mcur_dir + _mfile_name);
+	        FileReader fr = new FileReader(_mfile_name);
 	        BufferedReader br = new BufferedReader(fr);
 
 	        while(true) {

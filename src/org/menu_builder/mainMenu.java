@@ -1,6 +1,7 @@
 package org.menu_builder;
 
 import java.awt.Color;
+import java.awt.GraphicsEnvironment;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -31,13 +32,13 @@ public class mainMenu {
 	private static LayoutBuilder layout;
 
 	public static void main(String[] args) {
-		layout = new LayoutBuilder( 270, 800, "Mam Bing Menu");
+		layout = new LayoutBuilder( 270, 800, "Agent-Based Simulation Model");
 		
-		Font font = new Font("Arial", Font.BOLD, 17);
+		Font font = new Font("Lucida Sans Unicode, Lucida Grande, sans-serif", Font.BOLD, 17);
 		Color color= null;
-		color = color.blue;
+		color = color.darkGray;
 		
-		JLabel lbl = layout.buildJLabel("Matsim Project", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
+		JLabel lbl = layout.buildJLabel("ERS for DRVs", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
 		layout.addbuilder(lbl);
 		
 		JButton btn = layout.buildJButton("Create Network", 160, 30, 40, 50);
@@ -88,19 +89,6 @@ public class mainMenu {
 		btn4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
             	
-            	File file = new File("./output");
-            	boolean isDirectoryCreated = file.mkdir();
-            	   if (isDirectoryCreated) {
-            		   
-            	       System.out.println("successfully made");
-            	   } else {
-            		   
-            	          file.delete();
-            	          file.mkdir();
-            	          
-            	          System.out.println("deleted and made");
-            	   }
-            	
         		/* Create output files */
         		CreateOutput output = new CreateOutput();
         		output.generateOutput(); 
@@ -121,20 +109,88 @@ public class mainMenu {
             	String facility = null;
             	facility = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
             	facility = facility + "<networkChangeEvents xmlns=\"http://www.matsim.org/files/dtd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.matsim.org/files/dtd http://www.matsim.org/files/dtd/networkChangeEvents.xsd\">\n";
+            	int checker = 0;
             	for(int i=0; i<totalCount;i++){
             		
-            		String timeget = JOptionPane.showInputDialog("Enter time: (HH:MM:SS)");
-            		String idget = JOptionPane.showInputDialog("Enter id");
             		
-            		facility = facility + "\n\t<networkChangeEvent startTime=\""+ timeget +"\">\n";
-            		facility = facility + "\t\t<link refId=\""+ idget +"\"/>\n";
-            		facility = facility + "\t\t<freespeed type=\"absolute\" value=\"0.0\"/>\n";
-            		facility = facility + "\t</networkChangeEvent>\n\n";
+            		
+            		
+            		DefaultComboBoxModel timeget = new DefaultComboBoxModel();
+            		timeget.addElement("00:00:00");
+            		timeget.addElement("01:00:00");
+            		timeget.addElement("02:00:00");
+            		timeget.addElement("03:00:00");
+            		timeget.addElement("04:00:00");
+            		timeget.addElement("05:00:00");
+            		timeget.addElement("06:00:00");
+            		timeget.addElement("07:00:00");
+            		timeget.addElement("08:00:00");
+            		timeget.addElement("09:00:00");
+            		timeget.addElement("10:00:00");
+            		timeget.addElement("11:00:00");
+            		timeget.addElement("12:00:00");
+            		timeget.addElement("13:00:00");
+            		timeget.addElement("14:00:00");
+            		timeget.addElement("15:00:00");
+            		timeget.addElement("16:00:00");
+            		timeget.addElement("17:00:00");
+            		timeget.addElement("18:00:00");
+            		timeget.addElement("19:00:00");
+            		timeget.addElement("20:00:00");
+            		timeget.addElement("21:00:00");
+            		timeget.addElement("22:00:00");
+            		timeget.addElement("23:00:00");
+            		timeget.addElement("24:00:00");
+            		
+                    JComboBox comboBox = new JComboBox(timeget);
+            		
+            		
+            		JTextField Id = new JTextField();
+            		
+            		
+            		
+            		JTextField Id2 = new JTextField();
+            		
+            		Object[] message = {
+            			"Road Closure",
+            			"Enter Link's and Time of the Road",
+            			"Time : ", comboBox,
+            		    "Link Id : ", Id,
+            		    "Second Link",
+            		    "Link Id : ", Id2
+            		};
+
+            		int option = JOptionPane.showConfirmDialog(null, message, "Road Closure", JOptionPane.OK_CANCEL_OPTION);
+            		if (option == JOptionPane.OK_OPTION) {
+            			
+            			facility = facility + "\n\t<networkChangeEvent startTime=\""+ timeget.getSelectedItem() +"\">\n";
+                		facility = facility + "\t\t<link refId=\""+ Id.getText() +"\"/>\n";
+                		facility = facility + "\t\t<freespeed type=\"absolute\" value=\"0.0\"/>\n";
+                		facility = facility + "\t</networkChangeEvent>\n\n";
+            			
+            			facility = facility + "\n\t<networkChangeEvent startTime=\""+ timeget.getSelectedItem() +"\">\n";
+                		facility = facility + "\t\t<link refId=\""+ Id2.getText() +"\"/>\n";
+                		facility = facility + "\t\t<freespeed type=\"absolute\" value=\"0.0\"/>\n";
+                		facility = facility + "\t</networkChangeEvent>\n\n";
+        
+            		} else {
+            			checker = 1;
+            			break;
+            		    
+            		}
+            		//
+            		
+            		
             	}
             	
-            	facility = facility + "</networkChangeEvents>";
-            	file_handler file2 = new file_handler( "../input/roadClosure.xml" );
-        		file2.create_file( facility );
+            	if(checker == 0){
+	            	facility = facility + "</networkChangeEvents>";
+	            	file_handler file2 = new file_handler( "input/roadClosure.xml" );
+	        		file2.create_file( facility );
+	        		JOptionPane.showMessageDialog( null, "roadClosure.xml created!");
+            	}else{
+            		System.out.println("Road closure cancelled");
+            	}
         		
             }
         });
@@ -148,8 +204,9 @@ public class mainMenu {
             	String numvehicles = JOptionPane.showInputDialog("Please input Total No. of Vehicles");
             	int numvec = Integer.parseInt(numvehicles);
             	String pop = createAddedPopulation(numvec);
-            	file_handler file2 = new file_handler( "../input/NewPopulation.xml" );
+            	file_handler file2 = new file_handler( "input/NewPopulation.xml" );
         		file2.create_file( pop );
+        		JOptionPane.showMessageDialog( null, "NewPopulation.xml created");
             }
         });
 		
@@ -403,7 +460,7 @@ public class mainMenu {
         PreparedStatement stmt = null;
         ResultSet rs = null;
        
-        String query ="SELECT li.`id` as link_id, si.`street_name` as name  FROM `street_info` si LEFT JOIN  links li ON li.origid=si.`link_id` WHERE si.`street_name`=\""+ st_name +"\" ";
+        String query ="SELECT li.`id` as link_id, si.`street_name` as name  FROM `street_info` si LEFT JOIN  links li ON li.origid=si.`link_id` WHERE si.`street_name` like \"%"+ st_name +"%\" ";
        
         try {
             //getting database connection to MySQL server

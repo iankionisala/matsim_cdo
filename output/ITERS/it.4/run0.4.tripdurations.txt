@@ -1,0 +1,5 @@
+pattern	0+	5+	10+	15+	20+	25+	30+	35+	40+	45+	50+	55+	60+
+destination---origin	80	55	9	1	0	0	0	0	0	0	0	0	0
+origin---destination	79	55	10	1	0	0	0	0	0	0	0	0	0
+
+average trip duration: 308.1655172413793 seconds = 00:05:08
