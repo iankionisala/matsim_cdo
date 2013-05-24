@@ -7,7 +7,11 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -52,6 +56,24 @@ public class LayoutBuilder {
 		frame.setResizable(false);
 		frame.setTitle( title );
 		frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );	
+		
+		
+		
+	}
+	
+	public JLabel buildpic(String source_file, int height, int width, int picxlocation, int picylocation){
+		
+		BufferedImage myPicture = null;
+		
+		try {
+			myPicture = ImageIO.read(new File("source/bg.jpg"));
+		} catch (IOException e) {
+			System.out.println(e);
+		}
+		JLabel picLabel = new JLabel(new ImageIcon( myPicture ));
+		picLabel.setSize( width, height);
+		picLabel.setLocation(picxlocation,picylocation);
+		return picLabel;
 	}
 	
 	public JLabel buildJLabel(String title, Font font, int Jlbl_height, int Jlbl_width, Color color, int xlocation, int ylocation){

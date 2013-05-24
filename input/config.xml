@@ -23,10 +23,10 @@
 	    
 	    <!--  with road closures  -->
 	    
-	 <!-- 
+	 <!-- -->
 	     <param name="timeVariantNetwork" value="true" />
 	    <param name="inputChangeEventsFile" value="&INBASE;/roadClosure.xml" />
-	 -->
+	 
 	 
 
 	</module>

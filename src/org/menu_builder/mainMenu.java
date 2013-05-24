@@ -31,14 +31,14 @@ public class mainMenu {
 	private static LayoutBuilder layout;
 
 	public static void main(String[] args) {
-		layout = new LayoutBuilder( 270, 800, "Agent-Based Simulation Model");
+		layout = new LayoutBuilder( 370, 800, "Agent-Based Simulation Model");
 		
 		Font font = new Font("Lucida Sans Unicode, Lucida Grande, sans-serif", Font.BOLD, 17);
 		Color color= null;
 		color = color.darkGray;
 		
-		JLabel lbl = layout.buildJLabel("ERS for DRVs", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
-		layout.addbuilder(lbl);
+//		JLabel lbl = layout.buildJLabel("ERS for DRVs", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
+//		layout.addbuilder(lbl);
 		
 		JButton btn = layout.buildJButton("Create Network", 160, 30, 40, 50);
 		layout.addbuilder(btn);
@@ -63,8 +63,7 @@ public class mainMenu {
             public void actionPerformed(ActionEvent arg0) {
             	 
         		/* Create facilities.xml */
-            	CreateFacilities facilities = new CreateFacilities();
-            	facilities.generateFacilities();
+            	new CreateFacilities();
             	
             	JOptionPane.showMessageDialog(null, "Successfully Created facilities.xml");
             	
@@ -231,7 +230,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btnGenerateEventLog = layout.buildJButton("Event Log Reports",  160, 30, 210, 170);
+		JButton btnGenerateEventLog = layout.buildJButton("Generate Log Reports",  160, 30, 210, 170);
 		layout.addbuilder(btnGenerateEventLog);
 		
 		btnGenerateEventLog.addActionListener(new ActionListener() {
@@ -251,7 +250,7 @@ public class mainMenu {
 			}
 		});
 		
-		JButton btnEventLogReports = layout.buildJButton("Analysis Report",  160, 30, 380, 50);
+		JButton btnEventLogReports = layout.buildJButton("Analysis Report",  160, 30, 40, 210);
 		layout.addbuilder(btnEventLogReports);
 		
 		btnEventLogReports.addActionListener(new ActionListener() {
@@ -272,7 +271,7 @@ public class mainMenu {
 			}
 		});
 		
-		JButton btnAgentMasterFile = layout.buildJButton("Agent Master File",  160, 30, 380, 90);
+		JButton btnAgentMasterFile = layout.buildJButton("Agent Master File", 160, 30, 210, 210);
 		layout.addbuilder(btnAgentMasterFile);
 		
 		btnAgentMasterFile.addActionListener(new ActionListener() {
@@ -291,7 +290,7 @@ public class mainMenu {
 			}
 		});
 		
-		JButton btnStreetName = layout.buildJButton("Street Names",  160, 30, 380, 130);
+		JButton btnStreetName = layout.buildJButton("Street Names",  160, 30, 40, 250);
 		layout.addbuilder(btnStreetName);
 		
 		btnStreetName.addActionListener(new ActionListener() {
@@ -309,7 +308,7 @@ public class mainMenu {
 			}
 		});
 	
-		JButton btnLinksAttrib = layout.buildJButton("Links Attributes",  160, 30, 380, 170);
+		JButton btnLinksAttrib = layout.buildJButton("Links Attributes",  160, 30, 210, 250);
 		layout.addbuilder(btnLinksAttrib);
 		
 		btnLinksAttrib.addActionListener(new ActionListener() {
@@ -329,6 +328,8 @@ public class mainMenu {
 		});
 		
 		
+		JLabel bg = layout.buildpic("/source/bg.jpg", 370, 800, 0, 0);
+		layout.addbuilder(bg);
 	}
 	
 	private static String createAddedPopulation(int numvehicle){
@@ -374,7 +375,7 @@ public class mainMenu {
 				
 				population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
+        		population = population + "\t\t<person id=\""+ (67+i) +"\" employed=\"yes\">\n";
         				population = population + "\t\t\t<plan selected=\"yes\">\n";
 													        				String parsed_text = selectEvent();
 													        				String[] result;
@@ -430,7 +431,7 @@ public class mainMenu {
 					System.out.println("2 13-17:" +hms2);
 					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-	        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
+	        		population = population + "\t\t<person id=\""+ (67+i) +"\" employed=\"yes\">\n";
 	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
 														        				String parsed_text = selectEvent();
 														        				String[] result;
@@ -484,7 +485,7 @@ public class mainMenu {
 					System.out.println("2  17-24:" +hms2);
 					population = population + "<!-- =============================== random" + i +" ======================================= -->\n\n";
 
-	        		population = population + "\t\t<person id=\""+ (45+i) +"\" employed=\"yes\">\n";
+	        		population = population + "\t\t<person id=\""+ (67+i) +"\" employed=\"yes\">\n";
 	        				population = population + "\t\t\t<plan selected=\"yes\">\n";
 														        				String parsed_text = selectEvent();
 														        				String[] result;

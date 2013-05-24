@@ -19,108 +19,30 @@ import org.matsim.core.scenario.ScenarioImpl;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.geometry.CoordImpl;
 
+import xml_parser.file_handler;
+
 public class CreateFacilities {
-	
-	private final static Logger log = Logger.getLogger(CreateFacilities.class);
-	private Scenario scenario;
 
-	private String mBusinessCensusFile;
-	private String mOutputFacilities_path;
+	private static String inputtext;
+	private static String filepath = "source/facility.txt";
 	
-	public CreateFacilities() {
-		
-		this.mBusinessCensusFile = "./source/facilities_src/business_census.txt";
-		this.mOutputFacilities_path = "./input/facilities.xml.gz";
+	public CreateFacilities(){
+		_init();
 	}
 	
-	public void generateFacilities() {
-		
-		CreateFacilities facilitiesCreator = new CreateFacilities();
-		facilitiesCreator.init();
-		facilitiesCreator.run();
-		facilitiesCreator.write();
-		log.info("Creation finished #################################");
-		
+	private static void _init(){
+		readFile();
+		createFile(inputtext);
 	}
 	
-	private void init() {
-		/*
-		 * Create the scenario
-		 */
-		Config config = ConfigUtils.createConfig();
-		this.scenario = ScenarioUtils.createScenario(config);	
+	private static void createFile(String input){
+		file_handler file = new file_handler("input/facilities.xml");
+		file.create_file( input );
 	}
 	
-	private void run() {
-
-		this.readBusinessCensus();
-	
-	}
-	
-	private int readBusinessCensus() {
-		int cnt = 0;
-		try {
-			BufferedReader bufferedReader = new BufferedReader(new FileReader(this.mBusinessCensusFile));
-			String line = bufferedReader.readLine(); //skip header
-			
-			// id = 0
-			int index_xCoord = 1;
-			int index_yCoord = 2;
-			int index_types = 3;
-			
-			
-			while ((line = bufferedReader.readLine()) != null) {
-				String parts[] = line.split("\t");
-				
-				Coord coord = new CoordImpl(Double.parseDouble(parts[index_xCoord]),
-						Double.parseDouble(parts[index_yCoord]));
-				
-				ActivityFacilityImpl facility = 
-					(ActivityFacilityImpl)((ScenarioImpl)this.scenario).getActivityFacilities().createAndAddFacility(new IdImpl(cnt), coord);
-				
-				String types [] = parts[index_types].split(",");
- 				for (int i = 0; i < types.length; i++) {
- 					this.addActivityOption(facility, types[i]);
-				}
-				cnt++;
-			}
-		} // end try
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return cnt;
-	}
-	
-	
-	private void addActivityOption(ActivityFacility facility, String type) {
-		((ActivityFacilityImpl) facility).createActivityOption(type);
-		
-		/*
-		 * [[ 1 ]] Specify the opening hours here for shopping and leisure. An example is given for the activities work and home.
-		 */
-		ActivityOptionImpl actOption = (ActivityOptionImpl)facility.getActivityOptions().get(type);
-		OpeningTimeImpl opentime;
-		if (type.equals("shop")) {
-			opentime =  new OpeningTimeImpl(DayType.wkday, 8.0 * 3600.0, 18.30 * 3600);
-		}
-		else if (type.equals("leisure") || type.equals("education")) {
-			opentime = new OpeningTimeImpl(DayType.wkday, 8.0 * 3600.0, 18.30 * 3600);
-		}
-		else if (type.equals("work")) {
-			opentime = new OpeningTimeImpl(DayType.wkday, 8.0 * 3600.0, 19.0 * 3600); //[[ 1 ]] opentime = null;
-		}
-		else if (type.equals("evacuation")) {
-			opentime = new OpeningTimeImpl(DayType.wkday, 8.0 * 3600.0, 19.0 * 3600); //[[ 1 ]] opentime = null;
-		}
-		// home
-		else {
-			opentime = new OpeningTimeImpl(DayType.wk, 0.0 * 3600.0, 24.0 * 3600);
-		}
-		actOption.addOpeningTime(opentime);	
-	}
-		
-	public void write() {
-		new FacilitiesWriter(((ScenarioImpl) this.scenario).getActivityFacilities()).write(this.mOutputFacilities_path);
+	private static void readFile(){
+		file_handler file = new file_handler(filepath);
+		inputtext = file.parse_data();
 	}
 
 }
