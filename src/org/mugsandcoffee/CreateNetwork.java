@@ -21,7 +21,7 @@ public class CreateNetwork {
 	
 	public CreateNetwork() {
 		
-		this.mOSM_path = "data/map_sg.osm";
+		this.mOSM_path = "input/parse/map_sg.osm";
 		this.mOutputNetwork = "input/network.xml";
 		
 	}

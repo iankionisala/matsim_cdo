@@ -10,7 +10,7 @@ public class CreateOutput {
 	
 	public CreateOutput() {
 		
-		this.mConfig_path = "input/config.xml";
+		this.mConfig_path = "input/parse/config.xml";
 	}
 	
 	public void generateOutput() {

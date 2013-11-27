@@ -24,7 +24,7 @@ import xml_parser.file_handler;
 public class CreateFacilities {
 
 	private static String inputtext;
-	private static String filepath = "source/facility.txt";
+	private static String filepath = "input/parse/facility.txt";
 	
 	public CreateFacilities(){
 		_init();

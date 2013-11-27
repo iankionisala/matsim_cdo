@@ -1,5 +1,0 @@
-﻿DELETE FROM route; /* run this FIRST */
-CALL sp_generate_analysis_report(); /* run this SECOND */
-SELECT * FROM route; /* run this THIRDLY */
-SELECT * FROM tmproute; /* not neccessar to run*/
-

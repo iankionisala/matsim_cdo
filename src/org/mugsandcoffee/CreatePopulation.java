@@ -6,7 +6,7 @@ import xml_parser.*;
 public class CreatePopulation {
 	
 	private static String inputtext;
-	private static String filepath = "source/population.txt";
+	private static String filepath = "input/parse/population.txt";
 	
 	public CreatePopulation(){
 		_init();

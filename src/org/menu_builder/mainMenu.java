@@ -7,13 +7,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import xml_parser.*;
 
 import javax.swing.*;
 
@@ -21,10 +19,9 @@ import org.mugsandcoffee.CreateFacilities;
 import org.mugsandcoffee.CreateNetwork;
 import org.mugsandcoffee.CreateOutput;
 import org.mugsandcoffee.CreatePopulation;
+import org.mugsandcoffee.CreateLinks;
+
 import xml_parser.file_handler;
-import com.mysql.jdbc.Statement;
-import org.mugsandcoffee.GenerateEventLog;
-import org.mugsandcoffee.datasource.*;
 
 public class mainMenu {
 	
@@ -40,7 +37,7 @@ public class mainMenu {
 //		JLabel lbl = layout.buildJLabel("ERS for DRVs", font, 120, 15, color, ((layout.scrnwidth/4) - (120/8)), 10);
 //		layout.addbuilder(lbl);
 		
-		JButton btn = layout.buildJButton("Create Network", 160, 30, 40, 50);
+		JButton btn = layout.buildJButton("Create Network", 160, 60, 40, 70);
 		layout.addbuilder(btn);
 		
 		btn.addActionListener(new ActionListener() {
@@ -56,7 +53,7 @@ public class mainMenu {
         });
 		
 		//buttons
-		JButton btn2 = layout.buildJButton("Create Facilities", 160, 30, 210, 50);
+		JButton btn2 = layout.buildJButton("Create Facilities", 160, 60, 210, 70);
 		layout.addbuilder(btn2);
 		
 		btn2.addActionListener(new ActionListener() {
@@ -70,7 +67,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn3 = layout.buildJButton("Create DRVs", 160, 30, 40,  90);
+		JButton btn3 = layout.buildJButton("Create DRVs", 160, 60, 40,  150);
 		layout.addbuilder(btn3);
 		
 		btn3.addActionListener(new ActionListener() {
@@ -81,7 +78,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn4 = layout.buildJButton("Create Output", 160, 30, 210, 90);
+		JButton btn4 = layout.buildJButton("Create Output", 160, 60, 210, 150);
 		layout.addbuilder(btn4);
 		
 		btn4.addActionListener(new ActionListener() {
@@ -96,7 +93,7 @@ public class mainMenu {
             }
         });
 		
-		JButton btn5 = layout.buildJButton("Add road closure", 160, 30, 40, 130);
+		JButton btn5 = layout.buildJButton("Add road closure", 160, 60, 40, 230);
 		layout.addbuilder(btn5);
 		
 		btn5.addActionListener(new ActionListener() {
@@ -194,7 +191,7 @@ public class mainMenu {
         });
 		
 		//buttons
-		JButton btn6 = layout.buildJButton("Add Vehicle", 160, 30, 210, 130);
+		JButton btn6 = layout.buildJButton("Add Vehicle", 160, 60, 210, 230);
 		layout.addbuilder(btn6);
 		
 		btn6.addActionListener(new ActionListener() {
@@ -207,125 +204,6 @@ public class mainMenu {
         		JOptionPane.showMessageDialog( null, "NewPopulation.xml created");
             }
         });
-		
-		JButton btn7 = layout.buildJButton("Search", 160, 30, 40, 170);
-		layout.addbuilder(btn7);
-		
-		
-		
-		btn7.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-            	String street_name = JOptionPane.showInputDialog("Search name of St.");
-            	String street = search_street(street_name);
-            	Font font = new Font("Arial", Font.BOLD, 13);
-            	JTextArea textArea = new JTextArea();
-            	textArea.setFont(font);
-            	textArea.setText(" Link Id's : \n\n" +street);
-            	textArea.setSize(300, Short.MAX_VALUE); // limit = width in pixels, e.g. 500
-            	textArea.setWrapStyleWord(true);
-            	textArea.setRows(10);
-            	textArea.setLineWrap(true);
-            	
-            	JOptionPane.showMessageDialog( null, textArea, "Link id's of "+ street_name, JOptionPane.WARNING_MESSAGE);
-            }
-        });
-		
-		JButton btnGenerateEventLog = layout.buildJButton("Generate Log Reports",  160, 30, 210, 170);
-		layout.addbuilder(btnGenerateEventLog);
-		
-		btnGenerateEventLog.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent arg0) {
-				GenerateEventLog genEventLog = new GenerateEventLog();
-				
-				try {
-					genEventLog.generateLog();
-					
-					JOptionPane.showMessageDialog(layout.getFrame(), "Processing Done....");
-					
-				} catch(Exception e) {
-					System.out.println("btnGenerateEventLog: " + e.getMessage());
-				}
-				
-			}
-		});
-		
-		JButton btnEventLogReports = layout.buildJButton("Analysis Report",  160, 30, 40, 210);
-		layout.addbuilder(btnEventLogReports);
-		
-		btnEventLogReports.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				mncTable tb = new mncTable();
-				
-				try {
-					String strQry = "SELECT p.name, r.links, r.distance, r.timefrom, r.timeto, r.timeelapsed, r.direction FROM route r LEFT JOIN person p ON r.agent=p.idw";
-//					String strQry = "SELECT l.id, l.origid, s.street_name FROM street_info s LEFT JOIN links l ON s.link_id=l.origid WHERE l.id IS NOT NULL";
-					String[] tblHeader = {"Agent Name", "Links", "Distance", "From", "To", "Elapse Time", "Direcion"}; // {"Matsim ID", "OpenStreet Map ID", "Street Name"};//
-					tb.showTable(strQry, tblHeader, "Street Information");
-					
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		
-		JButton btnAgentMasterFile = layout.buildJButton("Agent Master File", 160, 30, 210, 210);
-		layout.addbuilder(btnAgentMasterFile);
-		
-		btnAgentMasterFile.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				mncTable tb = new mncTable();
-				
-				try {
-					String strQry = "SELECT * FROM person p";
-					String[] tblHeader = {"Agent ID", "Agent Name"};
-					tb.showTable(strQry, tblHeader, "Agent Master File");
-					
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
-		});
-		
-		JButton btnStreetName = layout.buildJButton("Street Names",  160, 30, 40, 250);
-		layout.addbuilder(btnStreetName);
-		
-		btnStreetName.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mncTable tb = new mncTable();
-				
-				try {
-					String strQry = "SELECT * FROM links_street l WHERE link_id IS NOT NULL";
-					String[] tblHeader = {"Link ID", "Street Name"};
-					tb.showTable(strQry, tblHeader, "Street Names");
-					
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}				
-			}
-		});
-	
-		JButton btnLinksAttrib = layout.buildJButton("Links Attributes",  160, 30, 210, 250);
-		layout.addbuilder(btnLinksAttrib);
-		
-		btnLinksAttrib.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				mncTable tb = new mncTable();
-				
-				try {
-					String strQry = " SELECT id, `from`, `to`, length, freespeed, capacity, permlanes, oneway, modes, origid FROM links l";
-					String[] tblHeader = {"Link ID", "From", "To", "Length", "Freespeed", "Capacity", "PermLanes", "Oneway", "Modes", "OrigID"};
-					tb.showTable(strQry, tblHeader, "Links Attributes");
-					
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}				
-			}
-		});
 		
 		
 		JLabel bg = layout.buildpic("/source/bg.jpg", 370, 800, 0, 0);
@@ -514,74 +392,19 @@ public class mainMenu {
 	
 	
 	public static String selectEvent() {
-		String dbURL = "jdbc:mysql://localhost:3306/matsim";
-        String username ="root";
-        String password = "root";
-       
-        Connection dbCon = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-       
-        String query ="SELECT * FROM `nodes` ORDER BY RAND() LIMIT 0,1";
-       
-        try {
-            //getting database connection to MySQL server
-            dbCon = DriverManager.getConnection(dbURL, username, "");
-           
-            //getting PreparedStatment to execute query
-            stmt = dbCon.prepareStatement(query);
-           
-            //Resultset returned by query
-            rs = stmt.executeQuery(query);
-            String x = null;
-            String y = null;
-            while(rs.next()){
-            	x = rs.getString("x");
-                y = rs.getString("y");
-            }
-            String s= "";
-            s = x + "," + y;
-            return s;
-           
-        } catch (SQLException ex) {
-           
-        } 
-		return "";
+		
+		//gets x links in network
+		CreateLinks links = new CreateLinks();
+	    String [] items = links.nodes.split("-");
+	    List<String> xLinks = Arrays.asList(items);
+
+	    Random randomGenerator = new Random();
+	    int index = randomGenerator.nextInt(xLinks.size());
+	    
+	    return xLinks.get(index);
 	}
 	
-	public static String search_street(String st_name) {
-		String dbURL = "jdbc:mysql://localhost:3306/matsim";
-        String username ="root";
-       
-        Connection dbCon = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-       
-        String query ="SELECT li.`id` as link_id, si.`street_name` as name  FROM `street_info` si LEFT JOIN  links li ON li.origid=si.`link_id` WHERE si.`street_name` like \"%"+ st_name +"%\" ";
-       
-        try {
-            //getting database connection to MySQL server
-            dbCon = DriverManager.getConnection(dbURL, username, "");
-           
-            //getting PreparedStatment to execute query
-            stmt = dbCon.prepareStatement(query);
-           
-            //Resultset returned by query
-            rs = stmt.executeQuery(query);
-            String link_id = null;
-            String results = "               ";
-            while(rs.next()){
-            	link_id = rs.getString("link_id");
-            	results = results + link_id + "  ,  ";
-            }
 
-            results = results.substring(0, results.length() - 1);
-            return results;
-           
-        } catch (SQLException ex) {
-           return "No results";
-        }
-	}
 	
 
 	

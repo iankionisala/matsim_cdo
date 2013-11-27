@@ -1,3 +1,0 @@
-﻿-- SELECT length FROM links WHERE id IN (3799, 2223, 2221, 2219, 2217, 4637, 4588, 4590, 4592, 4594, 4596);
-SELECT CONCAT('The distance travelled is ', SUM(length)) AS Distance FROM links WHERE id IN (3799, 2223, 2221, 2219, 2217, 4637, 4588, 4590, 4592, 4594, 4596);
--- SELECT CONCAT('The distance travelled is ', AVG(length)) AS Distance FROM links WHERE id IN (3799, 2223, 2221, 2219, 2217, 4637, 4588, 4590, 4592, 4594, 4596);
