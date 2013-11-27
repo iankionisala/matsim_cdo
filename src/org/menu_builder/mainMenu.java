@@ -206,7 +206,7 @@ public class mainMenu {
         });
 		
 		
-		JLabel bg = layout.buildpic("/source/bg.jpg", 370, 800, 0, 0);
+		JLabel bg = layout.buildpic("input/parse/bg.jpg", 370, 800, 0, 0);
 		layout.addbuilder(bg);
 	}
 	

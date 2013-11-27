@@ -1,10 +1,67 @@
-2013-11-27 10:35:33,540  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,541  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,541  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,542  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,543  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,543  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,544  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,544  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,545  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
-2013-11-27 10:35:33,546  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:56:02,157  WARN AbstractController$2:79 Getting uncaught Exception in Thread AWT-EventQueue-0
+java.lang.RuntimeException: The output directory ./output exists already but has files in it! Please delete its content or the directory and start again. We will not delete or overwrite any existing files.
+	at org.matsim.core.controler.OutputDirectoryHierarchy.createDirectories(OutputDirectoryHierarchy.java:172)
+	at org.matsim.core.controler.OutputDirectoryHierarchy.<init>(OutputDirectoryHierarchy.java:66)
+	at org.matsim.core.controler.OutputDirectoryHierarchy.<init>(OutputDirectoryHierarchy.java:49)
+	at org.matsim.core.controler.AbstractController.setupOutputDirectory(AbstractController.java:103)
+	at org.matsim.core.controler.Controler.run(Controler.java:319)
+	at org.mugsandcoffee.CreateOutput.generateOutput(CreateOutput.java:21)
+	at org.menu_builder.mainMenu$4.actionPerformed(mainMenu.java:89)
+	at javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+	at javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+	at javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+	at java.awt.Component.processMouseEvent(Unknown Source)
+	at javax.swing.JComponent.processMouseEvent(Unknown Source)
+	at java.awt.Component.processEvent(Unknown Source)
+	at java.awt.Container.processEvent(Unknown Source)
+	at java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.awt.Component.dispatchEvent(Unknown Source)
+	at java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.awt.EventQueue.access$200(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.awt.EventQueue$3.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.awt.EventQueue$4.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$1.doIntersectionPrivilege(Unknown Source)
+	at java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.awt.EventDispatchThread.run(Unknown Source)
+2013-11-27 12:58:08,352  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,352  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,352  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,367  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,368  WARN QVehicle:73 No VehicleCapacity set in Vehicle. Use default value of 4.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 9499 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 1784 too small: enlarge storage capacity from: 26.34482632040071 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 1783 too small: enlarge storage capacity from: 26.34482632040071 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 4708 too small: enlarge storage capacity from: 76.85771543969537 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 4707 too small: enlarge storage capacity from: 76.85771543969537 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 7633 too small: enlarge storage capacity from: 33.65020009483564 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,400  WARN QLinkImpl:551 Link 7632 too small: enlarge storage capacity from: 33.65020009483564 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:08,415  WARN QLinkImpl:551 Link 9500 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:12,368  WARN QLinkImpl:551 Link 9499 too small: enlarge storage capacity from: 282.89992748482354 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:12,369  WARN QLinkImpl:551 Link 1784 too small: enlarge storage capacity from: 26.34482632040071 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:12,369  WARN QLinkImpl:551 Link 1783 too small: enlarge storage capacity from: 26.34482632040071 Vehicles to: Infinity Vehicles.  This is not fatal, but modifies the traffic flow dynamics.
+2013-11-27 12:58:12,370  WARN QLinkImpl:554 Additional warnings of this type are suppressed.

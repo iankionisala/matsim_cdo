@@ -66,7 +66,7 @@ public class LayoutBuilder {
 		BufferedImage myPicture = null;
 		
 		try {
-			myPicture = ImageIO.read(new File("source/bg.jpg"));
+			myPicture = ImageIO.read(new File("" + source_file));
 		} catch (IOException e) {
 			System.out.println(e);
 		}
